@@ -33,6 +33,9 @@ final class Island: SKSpriteNode, GameBackgroundSpriteable {
         //29. Вращение острова по функции 25
         island.run(rotateForRandomAngle())
         
+        //56. Движение острова
+        island.run(move(from: point))
+        
         return island
     }
     
@@ -76,5 +79,23 @@ final class Island: SKSpriteNode, GameBackgroundSpriteable {
         //Возвращает экшен вращение против часовой стрелки
         return SKAction.rotate(toAngle: randomNumber * CGFloat(Double.pi / 180), duration: 0)
         
+    }
+    
+    //51. Функция для движения острова
+    private static func move(from point: CGPoint) -> SKAction {
+        
+        //52. Точка конечная куда смещаться
+        let movePoint = CGPoint(x: point.x, y: -200)
+        
+        //53. Расстояние смещения
+        let moveDistance = point.y + 200
+        
+        //54. Скорость движения
+        let movementSpeed: CGFloat = 20.0
+        
+        //55.
+        let duration = moveDistance / movementSpeed
+        
+        return SKAction.move(to: movePoint, duration: TimeInterval(duration))
     }
 }

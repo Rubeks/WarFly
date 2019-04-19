@@ -38,6 +38,9 @@ final class Cloud: SKSpriteNode, GameBackgroundSpriteable {
         //49. Размытие облаков (от 0 до 1) 0 полностью прозрачен.
         cloud.alpha = 0.75
         
+        //61.Движение облаков
+        cloud.run(move(from: point))
+        
         return cloud
     }
     
@@ -69,6 +72,24 @@ final class Cloud: SKSpriteNode, GameBackgroundSpriteable {
     
     return randomNumber
 }
+    
+    //56. Функция для движения острова
+    private static func move(from point: CGPoint) -> SKAction {
+        
+        //57. Точка конечная куда смещаться
+        let movePoint = CGPoint(x: point.x, y: -200)
+        
+        //58. Расстояние смещения
+        let moveDistance = point.y + 200
+        
+        //59. Скорость движения
+        let movementSpeed: CGFloat = 25.0
+        
+        //60.
+        let duration = moveDistance / movementSpeed
+        
+        return SKAction.move(to: movePoint, duration: TimeInterval(duration))
+    }
     
    
 }
