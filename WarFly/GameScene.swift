@@ -22,6 +22,9 @@ class GameScene: SKScene {
         //12. Заполнение всего экрана(пример для X XR XS)
         background.size = self.size
         
+        //13. Тест гита
+        print("haha")
+        
         //11.Добавление на экран
         self.addChild(background)
         
