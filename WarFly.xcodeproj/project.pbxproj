@@ -18,6 +18,7 @@
 		B985310D2269C775006B8A63 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = B985310C2269C775006B8A63 /* Cloud.swift */; };
 		B985310F2269D936006B8A63 /* PlayerPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = B985310E2269D936006B8A63 /* PlayerPlane.swift */; };
 		B98531112269DA76006B8A63 /* PlayerPlane.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B98531102269DA75006B8A63 /* PlayerPlane.atlas */; };
+		B9853113226A0137006B8A63 /* GameBackgroundSpriteable + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9853112226A0137006B8A63 /* GameBackgroundSpriteable + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B985310C2269C775006B8A63 /* Cloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		B985310E2269D936006B8A63 /* PlayerPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPlane.swift; sourceTree = "<group>"; };
 		B98531102269DA75006B8A63 /* PlayerPlane.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerPlane.atlas; sourceTree = "<group>"; };
+		B9853112226A0137006B8A63 /* GameBackgroundSpriteable + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameBackgroundSpriteable + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				B98530F02269A6A2006B8A63 /* AppDelegate.swift */,
 				B98530F62269A6A2006B8A63 /* GameScene.swift */,
 				B985310C2269C775006B8A63 /* Cloud.swift */,
+				B9853112226A0137006B8A63 /* GameBackgroundSpriteable + Extension.swift */,
 				B985310E2269D936006B8A63 /* PlayerPlane.swift */,
 				B985310A2269BB26006B8A63 /* Island.swift */,
 				B98531082269AF70006B8A63 /* BackGround.swift */,
@@ -156,6 +159,7 @@
 			files = (
 				B98530F72269A6A2006B8A63 /* GameScene.swift in Sources */,
 				B985310F2269D936006B8A63 /* PlayerPlane.swift in Sources */,
+				B9853113226A0137006B8A63 /* GameBackgroundSpriteable + Extension.swift in Sources */,
 				B985310D2269C775006B8A63 /* Cloud.swift in Sources */,
 				B98530F92269A6A2006B8A63 /* GameViewController.swift in Sources */,
 				B98530F12269A6A2006B8A63 /* AppDelegate.swift in Sources */,

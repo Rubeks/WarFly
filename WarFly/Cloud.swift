@@ -9,16 +9,11 @@
 import SpriteKit
 import GameplayKit
 
-//36. Т.к и остров и облако используют один и тоже код нужно для них сделать протокол
-protocol GameBackgroundSpriteable {
-    static func populateSprite(at point: CGPoint) -> Self
-}
-
 //35. Класс для Облаков
 final class Cloud: SKSpriteNode, GameBackgroundSpriteable {
     
     //37. Создание острова
-    static func populateSprite(at point: CGPoint) -> Cloud {
+    static func populate() -> Cloud {
         
         //42. Запись в свойство рандомного имени из функции 15
         let cloudImageName = configureName()
@@ -30,7 +25,7 @@ final class Cloud: SKSpriteNode, GameBackgroundSpriteable {
         cloud.setScale(randomScaleFactor)
         
         //47. Координата острова
-        cloud.position = point
+        cloud.position = randomPoint()
         
         //48. Высота слоя
         cloud.zPosition = 10
@@ -39,7 +34,7 @@ final class Cloud: SKSpriteNode, GameBackgroundSpriteable {
         cloud.alpha = 0.75
         
         //61.Движение облаков
-        cloud.run(move(from: point))
+        cloud.run(move(from: cloud.position))
         
         return cloud
     }
@@ -83,7 +78,7 @@ final class Cloud: SKSpriteNode, GameBackgroundSpriteable {
         let moveDistance = point.y + 200
         
         //59. Скорость движения
-        let movementSpeed: CGFloat = 25.0
+        let movementSpeed: CGFloat = 150.0
         
         //60.
         let duration = moveDistance / movementSpeed

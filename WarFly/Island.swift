@@ -13,7 +13,7 @@ import GameplayKit
 final class Island: SKSpriteNode, GameBackgroundSpriteable {
     
     //14. Создание острова
-    static func populateSprite(at point: CGPoint) -> Island {
+    static func populate() -> Island {
         
         //16. Запись в свойство рандомного имени из функции 15
         let islandImageName = configureIslandName()
@@ -25,7 +25,7 @@ final class Island: SKSpriteNode, GameBackgroundSpriteable {
         island.setScale(randomScaleFactor)
         
         //27. Координата острова
-        island.position = point
+        island.position = randomPoint()
         
         //28. Высота слоя
         island.zPosition = 1
@@ -34,7 +34,34 @@ final class Island: SKSpriteNode, GameBackgroundSpriteable {
         island.run(rotateForRandomAngle())
         
         //56. Движение острова
-        island.run(move(from: point))
+        island.run(move(from: island.position))
+        
+        return island
+    }
+    
+    //83. Чтобы острова не наплывали друг на друга нужна точка к которой они движутся
+    static func populate(at point: CGPoint) -> Island {
+        
+        //84. Запись в свойство рандомного имени из функции 15
+        let islandImageName = configureIslandName()
+        
+        //85. Создание спрайта острова по имени из 16
+        let island = Island(imageNamed: islandImageName)
+        
+        //86. Изменение масштаба в щависимости от полученного рандомного числа.
+        island.setScale(randomScaleFactor)
+        
+        //87. Координата острова
+        island.position = point
+        
+        //88. Высота слоя
+        island.zPosition = 1
+        
+        //89. Вращение острова по функции 25
+        island.run(rotateForRandomAngle())
+        
+        //90. Движение острова
+        island.run(move(from: island.position))
         
         return island
     }
@@ -91,7 +118,7 @@ final class Island: SKSpriteNode, GameBackgroundSpriteable {
         let moveDistance = point.y + 200
         
         //54. Скорость движения
-        let movementSpeed: CGFloat = 20.0
+        let movementSpeed: CGFloat = 60.0
         
         //55.
         let duration = moveDistance / movementSpeed
