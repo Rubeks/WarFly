@@ -9,17 +9,10 @@
 import SpriteKit
 import GameplayKit
 
-//67. Для доступа к акселерометру
-import CoreMotion
-
 class GameScene: SKScene {
     
     //65.  Создаю плеера
-    var player: SKSpriteNode!
-    
-    //68. Объект для работы с наклоном телефона
-    let motionManager = CMMotionManager()
-    var xAcceleration: CGFloat = 0.0
+    var player: PlayerPlane!
    
     override func didMove(to view: SKView) {
         
@@ -29,19 +22,17 @@ class GameScene: SKScene {
         //101. Вызов функций для создания облаков и остравов
         spawnClouds()
         spawnIslands()
+        
+        //108.
+        player.performFly()
        
     }
     
     //72. Физика движения
     override func didSimulatePhysics() {
         
-        player.position.x += xAcceleration * 50
-        
-        if player.position.x < -70 {
-            player.position.x = self.size.width + 70
-        } else if player.position.x > self.size.width + 70 {
-            player.position.x = -70
-        }
+        //107.
+        player.checkPosition()
         
         //103. Перебор по нодам которые ушли ниже "у" и их удаление с экрана
         enumerateChildNodes(withName: "backgroundSprite") { (node, stop) in
@@ -90,18 +81,6 @@ class GameScene: SKScene {
         player = PlayerPlane.populate(at: CGPoint(x: screen.size.width / 2, y: 100))
         self.addChild(player)
         
-        //69. Как часто замерять ускорение
-        motionManager.accelerometerUpdateInterval = 0.2
-        
-        //70. OperationQueue.current будет работать в паралельном потоке
-        motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data, error) in
-            if let data = data {
-                let acceleration = data.acceleration
-                
-                //71. Данные о ускорении по оси х
-                self.xAcceleration = CGFloat(acceleration.x) * 0.7 + self.xAcceleration * 0.3
-            }
-        }
     }
     
     //91. Функция для генерации бесконечных облаков
