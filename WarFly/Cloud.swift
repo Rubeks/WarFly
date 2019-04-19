@@ -13,7 +13,7 @@ import GameplayKit
 final class Cloud: SKSpriteNode, GameBackgroundSpriteable {
     
     //37. Создание острова
-    static func populate() -> Cloud {
+    static func populate(at point: CGPoint?) -> Cloud {
         
         //42. Запись в свойство рандомного имени из функции 15
         let cloudImageName = configureName()
@@ -25,10 +25,16 @@ final class Cloud: SKSpriteNode, GameBackgroundSpriteable {
         cloud.setScale(randomScaleFactor)
         
         //47. Координата острова
-        cloud.position = randomPoint()
+        cloud.position = point ?? randomPoint()
         
         //48. Высота слоя
         cloud.zPosition = 10
+        
+        //102. Имя по которому будут удалятся спрайты ушедшие за экран
+        cloud.name = "backgroundSprite"
+        
+        //105. Граница спрайта т.е сейчас это верх в центре
+        cloud.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         
         //49. Размытие облаков (от 0 до 1) 0 полностью прозрачен.
         cloud.alpha = 0.75
@@ -58,15 +64,15 @@ final class Cloud: SKSpriteNode, GameBackgroundSpriteable {
     
     //44. Свойство для рандомного числа, чтобы все острова имели разный масштаб картинки
     private static var randomScaleFactor: CGFloat {
-    
-    //45. Диапазон чисел
-    let distribution = GKRandomDistribution(lowestValue: 20, highestValue: 30)
-    
-    //46. Рандомное число
-    let randomNumber = CGFloat(distribution.nextInt()) / 10
-    
-    return randomNumber
-}
+        
+        //45. Диапазон чисел
+        let distribution = GKRandomDistribution(lowestValue: 20, highestValue: 30)
+        
+        //46. Рандомное число
+        let randomNumber = CGFloat(distribution.nextInt()) / 10
+        
+        return randomNumber
+    }
     
     //56. Функция для движения острова
     private static func move(from point: CGPoint) -> SKAction {
@@ -86,5 +92,5 @@ final class Cloud: SKSpriteNode, GameBackgroundSpriteable {
         return SKAction.move(to: movePoint, duration: TimeInterval(duration))
     }
     
-   
+    
 }

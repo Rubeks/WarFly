@@ -11,7 +11,7 @@ import GameplayKit
 
 //36. Т.к и остров и облако используют один и тоже код нужно для них сделать протокол
 protocol GameBackgroundSpriteable {
-    static func populate() -> Self
+    static func populate(at point: CGPoint?) -> Self
     static func randomPoint() -> CGPoint
 }
 
@@ -23,7 +23,7 @@ extension GameBackgroundSpriteable {
         let screen = UIScreen.main.bounds
         
         //77. Точка выше экрана по у
-        let distribution = GKRandomDistribution(lowestValue: Int(screen.size.height) + 100, highestValue: Int(screen.size.height) + 200)
+        let distribution = GKRandomDistribution(lowestValue: Int(screen.size.height) + 400, highestValue: Int(screen.size.height) + 500)
         
         //78. Рандомное число в диапазоне от высоты экрана +100 и +200
         let y = CGFloat(distribution.nextInt())

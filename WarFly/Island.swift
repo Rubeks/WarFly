@@ -12,7 +12,8 @@ import GameplayKit
 //13. Класс для Островов
 final class Island: SKSpriteNode, GameBackgroundSpriteable {
     
-    //14. Создание острова
+    //101. Удаляю 14
+    /*//14. Создание острова
     static func populate() -> Island {
         
         //16. Запись в свойство рандомного имени из функции 15
@@ -37,10 +38,10 @@ final class Island: SKSpriteNode, GameBackgroundSpriteable {
         island.run(move(from: island.position))
         
         return island
-    }
+    }*/
     
     //83. Чтобы острова не наплывали друг на друга нужна точка к которой они движутся
-    static func populate(at point: CGPoint) -> Island {
+    static func populate(at point: CGPoint?) -> Island {
         
         //84. Запись в свойство рандомного имени из функции 15
         let islandImageName = configureIslandName()
@@ -52,10 +53,16 @@ final class Island: SKSpriteNode, GameBackgroundSpriteable {
         island.setScale(randomScaleFactor)
         
         //87. Координата острова
-        island.position = point
+        island.position = point ?? randomPoint()
         
         //88. Высота слоя
         island.zPosition = 1
+        
+        //103.Имя по которому будут удалятся спрайты ушедшие за экран
+        island.name = "backgroundSprite"
+        
+        //104. Граница спрайта т.е сейчас это верх в центре
+        island.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         
         //89. Вращение острова по функции 25
         island.run(rotateForRandomAngle())
@@ -118,7 +125,7 @@ final class Island: SKSpriteNode, GameBackgroundSpriteable {
         let moveDistance = point.y + 200
         
         //54. Скорость движения
-        let movementSpeed: CGFloat = 60.0
+        let movementSpeed: CGFloat = 100.0
         
         //55.
         let duration = moveDistance / movementSpeed

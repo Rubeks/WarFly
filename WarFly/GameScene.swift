@@ -42,6 +42,13 @@ class GameScene: SKScene {
         } else if player.position.x > self.size.width + 70 {
             player.position.x = -70
         }
+        
+        //103. Перебор по нодам которые ушли ниже "у" и их удаление с экрана
+        enumerateChildNodes(withName: "backgroundSprite") { (node, stop) in
+            if node.position.y < -199 {
+                node.removeFromParent()
+            }
+        }
     }
     
     //73. Переношу все из didMove в новый метод
@@ -105,7 +112,7 @@ class GameScene: SKScene {
         
         //93. Создание облака
         let spawnCloudAction = SKAction.run {
-            let cloud = Cloud.populate()
+            let cloud = Cloud.populate(at: nil)
             self.addChild(cloud)
         }
         
@@ -126,7 +133,7 @@ class GameScene: SKScene {
         
         //98. Создание облака
         let spawnIslandAction = SKAction.run {
-            let island = Island.populate()
+            let island = Island.populate(at: nil)
             self.addChild(island)
         }
         
