@@ -25,6 +25,10 @@ class GameScene: SKScene {
         
         //74.
         configureStartScene()
+        
+        //101. Вызов функций для создания облаков и остравов
+        spawnClouds()
+        spawnIslands()
        
     }
     
@@ -91,5 +95,47 @@ class GameScene: SKScene {
                 self.xAcceleration = CGFloat(acceleration.x) * 0.7 + self.xAcceleration * 0.3
             }
         }
+    }
+    
+    //91. Функция для генерации бесконечных облаков
+    private func spawnClouds() {
+        
+        //92. Интервал для создания нового облака
+        let spawnCloudsWait = SKAction.wait(forDuration: 1)
+        
+        //93. Создание облака
+        let spawnCloudAction = SKAction.run {
+            let cloud = Cloud.populate()
+            self.addChild(cloud)
+        }
+        
+        //94. Запуск нескольких действий
+        let spawnCloudSequence = SKAction.sequence([spawnCloudsWait, spawnCloudAction])
+        
+        //95. повторение экшенов
+        let spawnCloudForever = SKAction.repeatForever(spawnCloudSequence)
+        
+        run(spawnCloudForever)
+    }
+    
+    //96. Функция для генерации бесконечных остравов
+    private func spawnIslands() {
+        
+        //97. Интервал для создания нового облака
+        let spawnIslandWait = SKAction.wait(forDuration: 1)
+        
+        //98. Создание облака
+        let spawnIslandAction = SKAction.run {
+            let island = Island.populate()
+            self.addChild(island)
+        }
+        
+        //99. Запуск нескольких действий
+        let spawnIslandSequence = SKAction.sequence([spawnIslandWait, spawnIslandAction])
+        
+        //100. повторение экшенов
+        let spawnIslandForever = SKAction.repeatForever(spawnIslandSequence)
+        
+        run(spawnIslandForever)
     }
 }
