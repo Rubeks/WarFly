@@ -37,8 +37,11 @@ class PlayerPlane: SKSpriteNode {
     
     static func populate(at point: CGPoint) -> PlayerPlane {
         
+        //241.
+        let atlas = Assets.shared.playerPlaneAtlas.textureNamed("airplane_3ver2_13")
+        
         //63. Текстура самолета
-        let playerPlaneTexture = SKTexture(imageNamed: "airplane_3ver2_13")
+        let playerPlaneTexture = atlas
         
         //63. Спрайт самолета по текстуре
         let playerPlane = PlayerPlane(texture: playerPlaneTexture)

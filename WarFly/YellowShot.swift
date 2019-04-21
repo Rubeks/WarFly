@@ -11,7 +11,7 @@ import SpriteKit
 //233. Наследник для выстрелов
 class YellowShot: Shot {
     init() {
-        let textureAtlas = SKTextureAtlas(named: "YellowAmmo")
+        let textureAtlas = Assets.shared.yellowAmmoAtlas //SKTextureAtlas(named: "YellowAmmo")
         super.init(textureAtlas: textureAtlas)
     }
     
