@@ -13,7 +13,7 @@ class GameScene: SKScene {
     
     //65.  Создаю плеера
     var player: PlayerPlane!
-   
+    
     override func didMove(to view: SKView) {
         
         //74.
@@ -22,7 +22,6 @@ class GameScene: SKScene {
         //101. Вызов функций для создания облаков и остравов
         spawnClouds()
         spawnIslands()
-        
         
         //157. Чтобы не появлялся в момент загрузки белый квадрат вместо самолета
         let deadline = DispatchTime.now() + .nanoseconds(1)
@@ -34,31 +33,49 @@ class GameScene: SKScene {
             self.player.performFly()
         }
         
-       
         //151.1  Создание плюшки с бонусом
         spawnPowerUp()
         
         //176. Создание врагов на экране
-        spawnEnemy(count: 5)
-       
+        spawnEnemies()
+        
+        //185
         
         
     }
     
     //172. Метод для создания врага
-    private func spawnEnemy(count: Int) {
+    private func spawnSpiralOfEnemy() {
         //173. Создание врага
-        let enemyTextureAtlas = SKTextureAtlas(named: "Enemy_1")
+        let enemyTextureAtlas1 = SKTextureAtlas(named: "Enemy_1")
+        
+        //186. Второй атлас для текстур
+        let enemyTextureAtlas2 = SKTextureAtlas(named: "Enemy_2")
         
         //подгрузка текстур чтобы не зависало
-        SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas]) {
-            Enemy.textureAtlas = enemyTextureAtlas
+        SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas1, enemyTextureAtlas2]) { [unowned self] in
+            
+            //187. Рандомное число
+            let randomNumber = Int(arc4random_uniform(2))
+            
+            //188. Массив из двух атласов
+            let arrayOfAtlases = [enemyTextureAtlas1, enemyTextureAtlas2]
+            
+            //189. Свойство в котором рандомный атлас
+            let textureAtlas = arrayOfAtlases[randomNumber]
             
             //174. Задежрка
             let waitAction = SKAction.wait(forDuration: 1.0)
             
-            let spawnEnemy = SKAction.run({
-                let enemy = Enemy()
+            let spawnEnemy = SKAction.run({ [unowned self] in
+                
+                //191. Отсортировать массив нужно чтобы была картинка самолета центрального
+                let textureNames = textureAtlas.textureNames.sorted()
+                
+                //190. Имя текстуры из двух атласов
+                let texture = textureAtlas.textureNamed(textureNames[12])
+                
+                let enemy = Enemy(enemyTexture: texture)
                 enemy.position = CGPoint(x: self.size.width / 2, y: self.size.height + 110)
                 self.addChild(enemy)
                 enemy.flySpiral()
@@ -66,10 +83,25 @@ class GameScene: SKScene {
             
             //175. Создание экшена на появление последовательности врагов
             let spawnAction = SKAction.sequence([waitAction, spawnEnemy])
-            let repeatAction = SKAction.repeat(spawnAction, count: count)
+            let repeatAction = SKAction.repeat(spawnAction, count: 3)
             
             self.run(repeatAction)
         }
+    }
+    
+    //181. Метод который будет вызывать метод  @172
+    private func spawnEnemies() {
+        
+        //182. Задержка
+        let waitAction = SKAction.wait(forDuration: 3.0)
+        
+        //183. Свойство где хранится отрисовки самолетов врага 5 раз
+        let spawnSpiralAction = SKAction.run { [unowned self] in
+            self.spawnSpiralOfEnemy()
+        }
+        
+        //184. Отрисовка на экране
+        self.run(SKAction.repeatForever(SKAction.sequence([waitAction, spawnSpiralAction])))
     }
     
     //151. Метод Создание плюшки с бонусом
@@ -113,18 +145,18 @@ class GameScene: SKScene {
         //80. Удаляю цикл для отрисовки и задаю сам первоначальное положение
         //31. Цикл для отрисовки остравов
         /*for _ in 1...7 {
-            
-            //32. Рандомное число с верхним диапозоном = ширине экрана, нижнее = 0
-            let x: CGFloat = CGFloat(GKRandomSource.sharedRandom().nextInt(upperBound: Int(screen.size.width)))
-            
-            //33. Рандомное число с верхним диапозоном = высоте экрана, нижнее = 0
-            let y: CGFloat = CGFloat(GKRandomSource.sharedRandom().nextInt(upperBound: Int(screen.size.height)))
-        }
- */
+         
+         //32. Рандомное число с верхним диапозоном = ширине экрана, нижнее = 0
+         let x: CGFloat = CGFloat(GKRandomSource.sharedRandom().nextInt(upperBound: Int(screen.size.width)))
+         
+         //33. Рандомное число с верхним диапозоном = высоте экрана, нижнее = 0
+         let y: CGFloat = CGFloat(GKRandomSource.sharedRandom().nextInt(upperBound: Int(screen.size.height)))
+         }
+         */
         //81. Добавление острова с рандомными координатами
         let island1 = Island.populate(at: CGPoint(x: 100, y: 200))
         self.addChild(island1)
-
+        
         //82. второй остров
         let island2 = Island.populate(at: CGPoint(x: self.size.width - 100, y: self.size.height - 200))
         self.addChild(island2)

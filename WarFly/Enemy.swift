@@ -14,11 +14,14 @@ class Enemy: SKSpriteNode {
     //159. Свойство для хранения массива структур вражеского самолета
     static var textureAtlas: SKTextureAtlas?
     
+    //177. Свойство для хранения текстур
+    var enemyTexture: SKTexture!
+    
     //160. Дефолтный инициализатор для объекта класаа
-    init() {
+    init(enemyTexture: SKTexture) {
         
-        //161. Свойство свойтсво с текстурой вражеского самолета
-        let texture = Enemy.textureAtlas?.textureNamed("airplane_4ver2_13")
+        //161. Свойство с текстурой вражеского самолета
+        let texture = enemyTexture
         
         super.init(texture: texture, color: .clear, size: CGSize(width: 221, height: 204))
         
@@ -42,10 +45,10 @@ class Enemy: SKSpriteNode {
     //167.Метод для движения самолета по спирали
     func flySpiral() {
         let timeHorizontal: Double = 3
-        let timeVertical: Double = 10
+        let timeVertical: Double = 6
         
         let screenSize = UIScreen.main.bounds
-        
+    
         //168. Враг должен двигаться влево по ширине экрана не долетая 50 поинтов до конца т.к ширина спрайта 221 я взял у него мастаб 0.5 т,е он стал 110 поинтов и я его ограничиваю в 50 до конца, значит краем крыла он сможет залетать за границу экрана.
         //169. Движение влево и вправо
         let moveLeft = SKAction.moveTo(x: 50, duration: timeHorizontal)
@@ -53,7 +56,11 @@ class Enemy: SKSpriteNode {
         let moveRight = SKAction.moveTo(x: screenSize.width - 50, duration: timeHorizontal)
         moveRight.timingMode = .easeInEaseOut
         
-        let asideMovementSequence = SKAction.sequence([moveLeft, moveRight])
+        //178. Число в диапозоне от 0 до 1
+        let randomNumber = Int(arc4random_uniform(2))
+        
+        //180. Условие на проверку case 0 или 1 и в зависимости от этого меняет направление движения
+        let asideMovementSequence = randomNumber == EnemyDirection.left.rawValue ? SKAction.sequence([moveLeft, moveRight]) : SKAction.sequence([moveRight, moveLeft])
         
         let foreverAsideMovement = SKAction.repeatForever(asideMovementSequence)
         
@@ -64,6 +71,12 @@ class Enemy: SKSpriteNode {
         let groupMovement = SKAction.group([foreverAsideMovement, forwardMovement])
         
         self.run(groupMovement)
+    }
+    
+    //179.Энум для использования @ 178 чтобы самолеты двигались в разые стороны
+    enum EnemyDirection: Int {
+        case left = 0
+        case right
     }
     
 }
