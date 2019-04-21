@@ -23,12 +23,14 @@ class PlayerPlane: SKSpriteNode {
     var rightTextureArrayAnimation = [SKTexture]()
     var forwardTextureArrayAnimation = [SKTexture]()
     
+    //153. Кортеж для перебора в цикле @152
+    let animationSpriteStrides = [(13, 1, -1), (13, 26, 1), (13, 13, 1)]
+    
     //124. свойство для метода @122
     var moveDirection: TurnDirection = .none
     
     //125. Чтобы анимация не прерывала себя(пример поворачиваю влево и резко стал поворачивать вправо)
     var stillTurning = false
-    
     
     //108.
     let screenSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -64,8 +66,10 @@ class PlayerPlane: SKSpriteNode {
     //106.2 Движение самолета в зависимости от акселерометра
     func performFly() {
         
-        //121. Перед началом полета подгружаю эти картинки
-        planeAnimationFillArray()
+        //156. Вместо удаленного 110
+        /*//121. Перед началом полета подгружаю эти картинки
+         planeAnimationFillArray()*/
+        preloadTextureArrays()
         
         //69. Как часто замерять ускорение
         motionManager.accelerometerUpdateInterval = 0.2
@@ -92,77 +96,106 @@ class PlayerPlane: SKSpriteNode {
         
     }
     
-    //110. Метод для перебора изображений и сохранение в массив
-    private func planeAnimationFillArray() {
-        SKTextureAtlas.preloadTextureAtlases([SKTextureAtlas(named: "PlayerPlane")]) {
-            
-            //110.1 Заполнение левого массива
-            self.leftTextureArrayAnimation = {
-                
-                //111. Создаю пустой массив
-                var array = [SKTexture]()
-                
-                //112. Перебираю все изображения от 13 до 1
-                for i in stride(from: 13, through: 1, by: -1) {
-                    
-                    //113ю ХЗ что это...типо создает строку с нажванием от 13 до 1
-                    let number = String(format: "%02d", i)
-                    
-                    //114. Создает имя файла текстуры с разными параметрами в конце от 1 до 13
-                    let texture = SKTexture(imageNamed: "airplane_3ver2_\(number)")
-                    
-                    //115. Добавление в массив текстуры
-                    array.append(texture)
+    //154. Удаляю @110
+    /*//110. Метод для перебора изображений и сохранение в массив
+     private func planeAnimationFillArray() {
+     SKTextureAtlas.preloadTextureAtlases([SKTextureAtlas(named: "PlayerPlane")]) {
+     
+     //110.1 Заполнение левого массива
+     self.leftTextureArrayAnimation = {
+     
+     //111. Создаю пустой массив
+     var array = [SKTexture]()
+     
+     //112. Перебираю все изображения от 13 до 1
+     for i in stride(from: 13, through: 1, by: -1) {
+     
+     //113ю ХЗ что это...типо создает строку с нажванием от 13 до 1
+     let number = String(format: "%02d", i)
+     
+     //114. Создает имя файла текстуры с разными параметрами в конце от 1 до 13
+     let texture = SKTexture(imageNamed: "airplane_3ver2_\(number)")
+     
+     //115. Добавление в массив текстуры
+     array.append(texture)
+     }
+     
+     SKTexture.preload(array, withCompletionHandler: {
+     print("preload is done")
+     })
+     return array
+     }()
+     
+     //116. Заполнение правого массива
+     self.rightTextureArrayAnimation = {
+     
+     //117. Создаю пустой массив
+     var array = [SKTexture]()
+     
+     //118. Перебираю все изображения от 13 до 26
+     for i in stride(from: 13, through: 26, by: 1) {
+     
+     //119. ХЗ что это...типо создает строку с нажванием от 13 до 26
+     let number = String(format: "%02d", i)
+     
+     //120. Создает имя файла текстуры с разными параметрами в конце от 13 до 26
+     let texture = SKTexture(imageNamed: "airplane_3ver2_\(number)")
+     
+     //121. Добавление в массив текстуры
+     array.append(texture)
+     }
+     
+     SKTexture.preload(array, withCompletionHandler: {
+     print("preload is done")
+     })
+     return array
+     }()
+     
+     //117.
+     self.forwardTextureArrayAnimation = {
+     
+     //118. Создаю пустой массив
+     var array = [SKTexture]()
+     
+     //119. Создает имя файла текстуры с 13
+     let texture = SKTexture(imageNamed: "airplane_3ver2_13")
+     
+     //120. Добавление в массив текстуры
+     array.append(texture)
+     
+     SKTexture.preload(array, withCompletionHandler: {
+     print("preload is done")
+     })
+     return array
+     }()
+     }
+     } */
+    
+    //152. Рефакторинг для метода @110
+    fileprivate func preloadArray(_stride: (Int, Int, Int), callback: @escaping (_ array: [SKTexture]) -> ()) {
+        var array = [SKTexture]()
+        for i in stride(from: _stride.0, through: _stride.1, by: _stride.2) {
+            let number = String(format: "%02d", i)
+            let texture = SKTexture(imageNamed: "airplane_3ver2_\(number)")
+            array.append(texture)
+        }
+        SKTexture.preload(array) {
+            callback(array)
+        }
+    }
+    
+    //155. Метод для заполнения массивов с текстурами повора влево, вправо
+    private func preloadTextureArrays() {
+        for i in 0...2 {
+            self.preloadArray(_stride: animationSpriteStrides[i], callback: { [unowned self] array in
+                switch i {
+                case 0: self.leftTextureArrayAnimation = array
+                case 1: self.rightTextureArrayAnimation = array
+                case 2: self.forwardTextureArrayAnimation = array
+                default: break
                 }
-                
-                SKTexture.preload(array, withCompletionHandler: {
-                    print("preload is done")
-                })
-                return array
-            }()
+            })
             
-            //116. Заполнение правого массива
-            self.rightTextureArrayAnimation = {
-                
-                //117. Создаю пустой массив
-                var array = [SKTexture]()
-                
-                //118. Перебираю все изображения от 13 до 26
-                for i in stride(from: 13, through: 26, by: 1) {
-                    
-                    //119. ХЗ что это...типо создает строку с нажванием от 13 до 26
-                    let number = String(format: "%02d", i)
-                    
-                    //120. Создает имя файла текстуры с разными параметрами в конце от 13 до 26
-                    let texture = SKTexture(imageNamed: "airplane_3ver2_\(number)")
-                    
-                    //121. Добавление в массив текстуры
-                    array.append(texture)
-                }
-                
-                SKTexture.preload(array, withCompletionHandler: {
-                    print("preload is done")
-                })
-                return array
-            }()
-            
-            //117.
-            self.forwardTextureArrayAnimation = {
-                
-                //118. Создаю пустой массив
-                var array = [SKTexture]()
-                
-                //119. Создает имя файла текстуры с 13
-                let texture = SKTexture(imageNamed: "airplane_3ver2_13")
-                    
-                //120. Добавление в массив текстуры
-                array.append(texture)
-                
-                SKTexture.preload(array, withCompletionHandler: {
-                    print("preload is done")
-                })
-                return array
-            }()
         }
     }
     
@@ -226,6 +259,4 @@ class PlayerPlane: SKSpriteNode {
         case right
         case none
     }
-    
-    
 }

@@ -58,13 +58,7 @@ class PowerUp: SKSpriteNode {
             //149. Запуск анимации
             self.run(rotationForever)
         }
-    }
-    
-    
-    
-    
-    
-    
+    } 
 }
 
 

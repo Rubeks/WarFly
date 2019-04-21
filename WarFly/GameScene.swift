@@ -23,8 +23,18 @@ class GameScene: SKScene {
         spawnClouds()
         spawnIslands()
         
-        //108.
-        player.performFly()
+        
+        //157. Чтобы не появлялся в момент загрузки белый квадрат вместо самолета
+        let deadline = DispatchTime.now() + .nanoseconds(1)
+        DispatchQueue.main.asyncAfter(deadline: deadline) { [unowned self] in
+            
+            //[unowned self] типо уменьшает массив сильных ссылок
+            
+            //108.
+            self.player.performFly()
+        }
+        
+       
         
         //151. Создание плюшки с бонусом
         let powerUp = PowerUp()
