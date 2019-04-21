@@ -25,6 +25,12 @@ class GameScene: SKScene {
         
         //108.
         player.performFly()
+        
+        //151. Создание плюшки с бонусом
+        let powerUp = PowerUp()
+        powerUp.performRotation()
+        powerUp.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        self.addChild(powerUp)
        
     }
     
