@@ -39,7 +39,6 @@ class GameScene: SKScene {
         //176. Создание врагов на экране
         spawnEnemies()
         
-        //185
         
         
     }
@@ -106,7 +105,7 @@ class GameScene: SKScene {
     
     //151. Метод Создание плюшки с бонусом
     private func spawnPowerUp() {
-        let powerUp = PowerUp()
+        let powerUp = BluePowerUp()
         powerUp.performRotation()
         powerUp.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         self.addChild(powerUp)

@@ -12,18 +12,38 @@ import SpriteKit
 class PowerUp: SKSpriteNode {
     
     //138. Первоначальный размер текстуры
-    let initialSize = CGSize(width: 52, height: 52)
-
-    //139. Сохранение в свойстве папки атлас с текстурами
-    let textureAtlas = SKTextureAtlas(named: "GreenPowerUp")
+    private let initialSize = CGSize(width: 52, height: 52)
+    
+    //192. Делаю из этого класса супер класс для двух наследников
+    /*//139. Сохранение в свойстве папки атлас с текстурами
+     //let textureAtlas = SKTextureAtlas(named: "GreenPowerUp")*/
+    private let textureAtlas: SKTextureAtlas!
     
     //140. Массив который будет заполняться текстурами из атласа
-    var animationSpriteArray = [SKTexture]()
+    private var animationSpriteArray = [SKTexture]()
+    
+    //196. Свойство для имени текстуры которое будет рандомное
+    private var textureNameBeingWith = ""
     
     //141. Инициализатор для первого спрайта
-    init() {
-        let greenTexture = textureAtlas.textureNamed("missle_green_01")
-        super.init(texture: greenTexture, color: .clear, size: initialSize)
+    init(textureAtlas: SKTextureAtlas) {
+        
+        //193.
+        self.textureAtlas = textureAtlas
+        
+        //194. Имя первого элемента из атласа
+        let textureName = textureAtlas.textureNames.sorted()[0]
+        
+        //195. Создание текстуры по имени которая принимается как входной параметр в инициализаторе класса
+        let texture = textureAtlas.textureNamed(textureName)
+        
+        //196. Записывается имя текстуры без например 01.png ну или 15.png
+        textureNameBeingWith = String(textureName.dropLast(6))
+        
+        super.init(texture: texture, color: .clear, size: initialSize)
+        
+        //199. Изменение размера плюшки
+        self.setScale(0.7)
         
         //142. Новое имя этого спрайта
         self.name = "powerUp"
@@ -40,10 +60,14 @@ class PowerUp: SKSpriteNode {
     //144.
     func performRotation() {
         
+        //197. Меняю цикл чтобы добавлялась текстура в массив с полным именем
         //145. Цикл для заполнения массива названиями текстур
         for i in 1...15 {
             let number = String(format: "%02d", i)
-            animationSpriteArray.append(SKTexture(imageNamed: "missle_green_\(number)"))
+            //animationSpriteArray.append(SKTexture(imageNamed: "missle_green_\(number)"))
+            //198.
+            animationSpriteArray.append(SKTexture(imageNamed: textureNameBeingWith + number.description))
+            
         }
         
         //146. Подгрузка текстур чтобы не зависало
