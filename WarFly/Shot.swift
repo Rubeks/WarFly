@@ -43,7 +43,7 @@ class Shot: SKSpriteNode {
         super.init(texture: texture, color: .clear, size: initialSize)
         
         //219. Изменение размера выстрела
-        self.setScale(0.7)
+        self.setScale(0.3)
         
         //220. Новое имя этого спрайта (пример: для удаления с экрана)
         self.name = "shotSprite"

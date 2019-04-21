@@ -19,8 +19,9 @@ class GameViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             
+            //253. Заменил стартовую сцену на сцену с кнопкой
             //2. Создаю сцену.
-            let scene = GameScene(size: self.view.frame.size)
+            let scene = MenuScene(size: self.view.bounds.size)
             
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .aspectFill
