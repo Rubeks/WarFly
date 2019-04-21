@@ -35,13 +35,49 @@ class GameScene: SKScene {
         }
         
        
+        //151.1  Создание плюшки с бонусом
+        spawnPowerUp()
         
-        //151. Создание плюшки с бонусом
+        //176. Создание врагов на экране
+        spawnEnemy(count: 5)
+       
+        
+        
+    }
+    
+    //172. Метод для создания врага
+    private func spawnEnemy(count: Int) {
+        //173. Создание врага
+        let enemyTextureAtlas = SKTextureAtlas(named: "Enemy_1")
+        
+        //подгрузка текстур чтобы не зависало
+        SKTextureAtlas.preloadTextureAtlases([enemyTextureAtlas]) {
+            Enemy.textureAtlas = enemyTextureAtlas
+            
+            //174. Задежрка
+            let waitAction = SKAction.wait(forDuration: 1.0)
+            
+            let spawnEnemy = SKAction.run({
+                let enemy = Enemy()
+                enemy.position = CGPoint(x: self.size.width / 2, y: self.size.height + 110)
+                self.addChild(enemy)
+                enemy.flySpiral()
+            })
+            
+            //175. Создание экшена на появление последовательности врагов
+            let spawnAction = SKAction.sequence([waitAction, spawnEnemy])
+            let repeatAction = SKAction.repeat(spawnAction, count: count)
+            
+            self.run(repeatAction)
+        }
+    }
+    
+    //151. Метод Создание плюшки с бонусом
+    private func spawnPowerUp() {
         let powerUp = PowerUp()
         powerUp.performRotation()
         powerUp.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         self.addChild(powerUp)
-       
     }
     
     //72. Физика движения
@@ -51,8 +87,8 @@ class GameScene: SKScene {
         player.checkPosition()
         
         //103. Перебор по нодам которые ушли ниже "у" и их удаление с экрана
-        enumerateChildNodes(withName: "backgroundSprite") { (node, stop) in
-            if node.position.y < -199 {
+        enumerateChildNodes(withName: "sprite") { (node, stop) in
+            if node.position.y < -100 {
                 node.removeFromParent()
             }
         }

@@ -31,7 +31,7 @@ final class Cloud: SKSpriteNode, GameBackgroundSpriteable {
         cloud.zPosition = 10
         
         //102. Имя по которому будут удалятся спрайты ушедшие за экран
-        cloud.name = "backgroundSprite"
+        cloud.name = "sprite"
         
         //105. Граница спрайта т.е сейчас это верх в центре
         cloud.anchorPoint = CGPoint(x: 0.5, y: 1.0)

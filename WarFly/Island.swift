@@ -59,7 +59,7 @@ final class Island: SKSpriteNode, GameBackgroundSpriteable {
         island.zPosition = 1
         
         //103.Имя по которому будут удалятся спрайты ушедшие за экран
-        island.name = "backgroundSprite"
+        island.name = "sprite"
         
         //104. Граница спрайта т.е сейчас это верх в центре
         island.anchorPoint = CGPoint(x: 0.5, y: 1.0)
