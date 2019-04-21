@@ -46,7 +46,7 @@ class PowerUp: SKSpriteNode {
         self.setScale(0.7)
         
         //142. Новое имя этого спрайта
-        self.name = "powerUp"
+        self.name = "sprite"
         
         //150. zPosition чтобы самолет мог сталкиваться с плюшками
         self.zPosition = 20
@@ -57,8 +57,19 @@ class PowerUp: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //144.
-    func performRotation() {
+    //202. Движение для плюшек
+    func startMovement() {
+        
+        performRotation()
+        
+        //203. Смещение плюшки
+        let moveForward = SKAction.moveTo(y: -100, duration: 5)
+        self.run(moveForward)
+    }
+    
+    
+    //144. Анимация вращения плюшки
+    private func performRotation() {
         
         //197. Меняю цикл чтобы добавлялась текстура в массив с полным именем
         //145. Цикл для заполнения массива названиями текстур
