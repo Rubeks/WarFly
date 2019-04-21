@@ -46,7 +46,7 @@ class PlayerPlane: SKSpriteNode {
         //64. Масштаб самолета
         playerPlane.setScale(0.5)
         playerPlane.position = point
-        playerPlane.zPosition = 20
+        playerPlane.zPosition = 40
         
         return playerPlane
     }

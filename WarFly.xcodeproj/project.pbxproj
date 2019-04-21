@@ -25,6 +25,9 @@
 		B985310F2269D936006B8A63 /* PlayerPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = B985310E2269D936006B8A63 /* PlayerPlane.swift */; };
 		B98531112269DA76006B8A63 /* PlayerPlane.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B98531102269DA75006B8A63 /* PlayerPlane.atlas */; };
 		B9853113226A0137006B8A63 /* GameBackgroundSpriteable + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9853112226A0137006B8A63 /* GameBackgroundSpriteable + Extension.swift */; };
+		B9AC1CA7226C980A00DBAA37 /* YellowAmmo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B9AC1CA6226C980A00DBAA37 /* YellowAmmo.atlas */; };
+		B9CDCD90226C90490032AE66 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CDCD8F226C90490032AE66 /* Shot.swift */; };
+		B9CDCD92226C94380032AE66 /* YellowShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CDCD91226C94380032AE66 /* YellowShot.swift */; };
 		B9E3AB37226C4B1C004D32EB /* PowepUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E3AB36226C4B1C004D32EB /* PowepUp.swift */; };
 		B9E3AB39226C4C01004D32EB /* GreenPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B9E3AB38226C4C01004D32EB /* GreenPowerUp.atlas */; };
 /* End PBXBuildFile section */
@@ -50,6 +53,9 @@
 		B985310E2269D936006B8A63 /* PlayerPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPlane.swift; sourceTree = "<group>"; };
 		B98531102269DA75006B8A63 /* PlayerPlane.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = PlayerPlane.atlas; sourceTree = "<group>"; };
 		B9853112226A0137006B8A63 /* GameBackgroundSpriteable + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameBackgroundSpriteable + Extension.swift"; sourceTree = "<group>"; };
+		B9AC1CA6226C980A00DBAA37 /* YellowAmmo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YellowAmmo.atlas; sourceTree = "<group>"; };
+		B9CDCD8F226C90490032AE66 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
+		B9CDCD91226C94380032AE66 /* YellowShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowShot.swift; sourceTree = "<group>"; };
 		B9E3AB36226C4B1C004D32EB /* PowepUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowepUp.swift; sourceTree = "<group>"; };
 		B9E3AB38226C4C01004D32EB /* GreenPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenPowerUp.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +95,8 @@
 				B95D5139226C5DEC0066488B /* Enemy.swift */,
 				B9E3AB36226C4B1C004D32EB /* PowepUp.swift */,
 				B95D5141226C83CE0066488B /* BluePowerUp.swift */,
+				B9CDCD8F226C90490032AE66 /* Shot.swift */,
+				B9CDCD91226C94380032AE66 /* YellowShot.swift */,
 				B95D5143226C83D80066488B /* GreenPowerUp.swift */,
 				B985310C2269C775006B8A63 /* Cloud.swift */,
 				B9853112226A0137006B8A63 /* GameBackgroundSpriteable + Extension.swift */,
@@ -100,13 +108,22 @@
 				B98530FD2269A6A4006B8A63 /* Assets.xcassets */,
 				B98530FF2269A6A5006B8A63 /* LaunchScreen.storyboard */,
 				B98531022269A6A5006B8A63 /* Info.plist */,
+				B9CDCD8E226C90160032AE66 /* Atlases */,
+			);
+			path = WarFly;
+			sourceTree = "<group>";
+		};
+		B9CDCD8E226C90160032AE66 /* Atlases */ = {
+			isa = PBXGroup;
+			children = (
+				B9AC1CA6226C980A00DBAA37 /* YellowAmmo.atlas */,
 				B98531102269DA75006B8A63 /* PlayerPlane.atlas */,
 				B9E3AB38226C4C01004D32EB /* GreenPowerUp.atlas */,
 				B95D513F226C7E670066488B /* BluePowerUp.atlas */,
 				B95D513B226C5E490066488B /* Enemy_1.atlas */,
 				B95D513D226C72040066488B /* Enemy_2.atlas */,
 			);
-			path = WarFly;
+			path = Atlases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +187,7 @@
 				B95D513E226C72040066488B /* Enemy_2.atlas in Resources */,
 				B95D513C226C5E490066488B /* Enemy_1.atlas in Resources */,
 				B98530FC2269A6A2006B8A63 /* Main.storyboard in Resources */,
+				B9AC1CA7226C980A00DBAA37 /* YellowAmmo.atlas in Resources */,
 				B9E3AB39226C4C01004D32EB /* GreenPowerUp.atlas in Resources */,
 				B98531112269DA76006B8A63 /* PlayerPlane.atlas in Resources */,
 				B98530FE2269A6A4006B8A63 /* Assets.xcassets in Resources */,
@@ -186,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B98530F72269A6A2006B8A63 /* GameScene.swift in Sources */,
+				B9CDCD92226C94380032AE66 /* YellowShot.swift in Sources */,
 				B985310F2269D936006B8A63 /* PlayerPlane.swift in Sources */,
 				B9853113226A0137006B8A63 /* GameBackgroundSpriteable + Extension.swift in Sources */,
 				B985310D2269C775006B8A63 /* Cloud.swift in Sources */,
@@ -196,6 +215,7 @@
 				B95D5144226C83D80066488B /* GreenPowerUp.swift in Sources */,
 				B985310B2269BB26006B8A63 /* Island.swift in Sources */,
 				B9E3AB37226C4B1C004D32EB /* PowepUp.swift in Sources */,
+				B9CDCD90226C90490032AE66 /* Shot.swift in Sources */,
 				B98531092269AF70006B8A63 /* BackGround.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

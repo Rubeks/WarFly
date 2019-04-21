@@ -141,9 +141,16 @@ class GameScene: SKScene {
                 node.removeFromParent()
                 
                 //208. Проверка удаления плюшки
-                if node.isKind(of: PowerUp.self) {
-                    print("PowerUp remove")
-                }
+                //                if node.isKind(of: PowerUp.self) {
+                //                    print("PowerUp remove")
+                //                }
+            }
+        }
+        
+        //231. Удаление с экрана выстрела
+        enumerateChildNodes(withName: "shotSprite") { (node, stop) in
+            if node.position.y >= self.size.height + 100 {
+                node.removeFromParent()
             }
         }
     }
@@ -229,5 +236,21 @@ class GameScene: SKScene {
         let spawnIslandForever = SKAction.repeatForever(spawnIslandSequence)
         
         run(spawnIslandForever)
+    }
+    
+    //232. Метод для создания выстрела
+    private func playerFire() {
+        let shot = YellowShot()
+        
+        //234. Позиция выстрела совпадает с самолетом
+        shot.position = self.player.position
+        
+        shot.startMovement()
+        self.addChild(shot)
+    }
+    
+    //235. Срабатывает при нажатие на экран
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        playerFire()
     }
 }
