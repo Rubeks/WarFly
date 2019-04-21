@@ -51,6 +51,20 @@ class PlayerPlane: SKSpriteNode {
         playerPlane.position = point
         playerPlane.zPosition = 40
         
+        //255. Создание физического тела объекта
+        playerPlane.physicsBody = SKPhysicsBody(texture: playerPlaneTexture, alphaThreshold: 0.5, size: playerPlane.size)
+        
+        //256. Т.е если что-то врезается в самолет он не двигается он как стена
+        playerPlane.physicsBody?.isDynamic = false
+        
+        playerPlane.physicsBody?.categoryBitMask = BitMaskCategory.player
+        
+        //257. С чем может взаимодействовать(самолеты врагов и пули)
+        playerPlane.physicsBody?.collisionBitMask = BitMaskCategory.enemy | BitMaskCategory.powerUp
+        
+        //258. Регистрация столкновений с самолетом врагов и пуль 
+        playerPlane.physicsBody?.contactTestBitMask = BitMaskCategory.enemy | BitMaskCategory.powerUp
+        
         return playerPlane
     }
     

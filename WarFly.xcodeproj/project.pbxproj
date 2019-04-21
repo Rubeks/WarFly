@@ -28,6 +28,7 @@
 		B9AC1CA7226C980A00DBAA37 /* YellowAmmo.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B9AC1CA6226C980A00DBAA37 /* YellowAmmo.atlas */; };
 		B9AC1CA9226C994500DBAA37 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC1CA8226C994500DBAA37 /* Assets.swift */; };
 		B9AC1CAB226C9F3F00DBAA37 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC1CAA226C9F3F00DBAA37 /* MenuScene.swift */; };
+		B9AC1CAD226CA40A00DBAA37 /* BitMaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC1CAC226CA40A00DBAA37 /* BitMaskCategory.swift */; };
 		B9CDCD90226C90490032AE66 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CDCD8F226C90490032AE66 /* Shot.swift */; };
 		B9CDCD92226C94380032AE66 /* YellowShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CDCD91226C94380032AE66 /* YellowShot.swift */; };
 		B9E3AB37226C4B1C004D32EB /* PowepUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E3AB36226C4B1C004D32EB /* PowepUp.swift */; };
@@ -58,6 +59,7 @@
 		B9AC1CA6226C980A00DBAA37 /* YellowAmmo.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = YellowAmmo.atlas; sourceTree = "<group>"; };
 		B9AC1CA8226C994500DBAA37 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		B9AC1CAA226C9F3F00DBAA37 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		B9AC1CAC226CA40A00DBAA37 /* BitMaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskCategory.swift; sourceTree = "<group>"; };
 		B9CDCD8F226C90490032AE66 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		B9CDCD91226C94380032AE66 /* YellowShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowShot.swift; sourceTree = "<group>"; };
 		B9E3AB36226C4B1C004D32EB /* PowepUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowepUp.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				B9AC1CA8226C994500DBAA37 /* Assets.swift */,
 				B98531082269AF70006B8A63 /* BackGround.swift */,
 				B98530F82269A6A2006B8A63 /* GameViewController.swift */,
+				B9AC1CAC226CA40A00DBAA37 /* BitMaskCategory.swift */,
 				B98530FA2269A6A2006B8A63 /* Main.storyboard */,
 				B9AC1CAA226C9F3F00DBAA37 /* MenuScene.swift */,
 				B98530FD2269A6A4006B8A63 /* Assets.xcassets */,
@@ -222,6 +225,7 @@
 				B95D5144226C83D80066488B /* GreenPowerUp.swift in Sources */,
 				B985310B2269BB26006B8A63 /* Island.swift in Sources */,
 				B9E3AB37226C4B1C004D32EB /* PowepUp.swift in Sources */,
+				B9AC1CAD226CA40A00DBAA37 /* BitMaskCategory.swift in Sources */,
 				B9AC1CAB226C9F3F00DBAA37 /* MenuScene.swift in Sources */,
 				B9CDCD90226C90490032AE66 /* Shot.swift in Sources */,
 				B98531092269AF70006B8A63 /* BackGround.swift in Sources */,

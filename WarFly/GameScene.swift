@@ -39,6 +39,12 @@ class GameScene: SKScene {
         //176. Создание врагов на экране
         spawnEnemies()
         
+        //280. Протокол для регистрации столкновений
+        physicsWorld.contactDelegate = self
+        
+        //281. Отключение гравитации(чтобы самолет не падал вниз экрана)
+        physicsWorld.gravity = CGVector.zero
+        
         
         
     }
@@ -252,5 +258,38 @@ class GameScene: SKScene {
     //235. Срабатывает при нажатие на экран
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         playerFire()
+    }
+}
+
+//283. Расширение для реализации двух методов протокола для столкновений
+extension GameScene:  SKPhysicsContactDelegate {
+    
+    //284. Начало контакта объектов
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        //285. Сюда присваиваются сталкивающиеся физические тела
+        let bodyA = contact.bodyA.categoryBitMask
+        let bodyB = contact.bodyB.categoryBitMask
+        
+        //286. Маски моих херовин
+        let player = BitMaskCategory.player
+        let enemy = BitMaskCategory.enemy
+        let shot = BitMaskCategory.shot
+        let powerUp = BitMaskCategory.powerUp
+        
+        //287. Проверка на столкновение битовых маск
+        if bodyA == player && bodyB == enemy || bodyB == player && bodyA == enemy {
+            print("enemy vs player")
+        } else if bodyA == player && bodyB == powerUp || bodyB == player && bodyA == powerUp {
+            print("powerUp vs player")
+        } else if bodyA == shot && bodyB == enemy || bodyB == shot && bodyA == enemy {
+            print("enemy vs shot")
+        }
+
+    }
+    
+    //285. Окончание контакта
+    func didEnd(_ contact: SKPhysicsContact) {
+
     }
 }

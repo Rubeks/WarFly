@@ -50,6 +50,20 @@ class Shot: SKSpriteNode {
         
         //221. zPosition чтобы выстрел был под самолетом
         self.zPosition = 30
+        
+        //267. Создание физического тела объекта врага
+        self.physicsBody = SKPhysicsBody(texture: texture, alphaThreshold: 0.5, size: self.size)
+        
+        //268. Т.е если пули будут врезаться во врагом они не будут смещаться
+        self.physicsBody?.isDynamic = false
+        
+        self.physicsBody?.categoryBitMask = BitMaskCategory.shot
+        
+        //269. С чем может взаимодействовать(самолеты врага)
+        self.physicsBody?.collisionBitMask = BitMaskCategory.enemy
+        
+        //270. Регистрация столкновений с самолетом врага
+        self.physicsBody?.contactTestBitMask = BitMaskCategory.enemy
     }
     
     // Инициализатор по умолчанию

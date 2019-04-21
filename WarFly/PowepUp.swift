@@ -50,6 +50,21 @@ class PowerUp: SKSpriteNode {
         
         //150. zPosition чтобы самолет мог сталкиваться с плюшками
         self.zPosition = 20
+        
+        //263. Создание физического тела объекта врага
+        self.physicsBody = SKPhysicsBody(texture: texture, alphaThreshold: 0.5, size: self.size)
+        
+        //264. Т.е если что-то врезается в плюшку он будет двигаться или чтото с ним будет происходить
+        self.physicsBody?.isDynamic = true
+        
+        self.physicsBody?.categoryBitMask = BitMaskCategory.powerUp
+        
+        //265. С чем может взаимодействовать(самолет юзера)
+        self.physicsBody?.collisionBitMask = BitMaskCategory.player
+        
+        //266. Регистрация столкновений с самолетом юзера
+        self.physicsBody?.contactTestBitMask = BitMaskCategory.player
+        
     }
     
     //143. Инициализатор по умолчанию

@@ -36,6 +36,20 @@ class Enemy: SKSpriteNode {
         
         //165. Имя текстуры чтобы можно было удалять самолеты улетевшие за экран
         self.name = "sprite"
+        
+        //259. Создание физического тела объекта врага
+        self.physicsBody = SKPhysicsBody(texture: texture, alphaThreshold: 0.5, size: self.size)
+        
+        //260. Т.е если что-то врезается в самолет он будет двигаться
+        self.physicsBody?.isDynamic = true
+        
+        self.physicsBody?.categoryBitMask = BitMaskCategory.enemy
+        
+        //261. С чем может взаимодействовать(самолет юзера и пули)
+        self.physicsBody?.collisionBitMask = BitMaskCategory.player | BitMaskCategory.shot
+        
+        //262. Регистрация столкновений с самолетом юзера и пуль
+        self.physicsBody?.contactTestBitMask = BitMaskCategory.player | BitMaskCategory.shot
     }
     
     required init?(coder aDecoder: NSCoder) {
