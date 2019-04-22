@@ -11,6 +11,7 @@
 		B92A3FFF226DDA1D00A02C59 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B92A3FFE226DDA1D00A02C59 /* Default-568h@2x.png */; };
 		B92A4001226DDDD800A02C59 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A4000226DDDD800A02C59 /* ButtonNode.swift */; };
 		B92A4003226DE4E400A02C59 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A4002226DE4E300A02C59 /* PauseScene.swift */; };
+		B92A4005226DED1100A02C59 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A4004226DED1100A02C59 /* SceneManager.swift */; };
 		B95D513A226C5DEC0066488B /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95D5139226C5DEC0066488B /* Enemy.swift */; };
 		B95D513C226C5E490066488B /* Enemy_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B95D513B226C5E490066488B /* Enemy_1.atlas */; };
 		B95D513E226C72040066488B /* Enemy_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B95D513D226C72040066488B /* Enemy_2.atlas */; };
@@ -44,6 +45,7 @@
 		B92A3FFE226DDA1D00A02C59 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B92A4000226DDDD800A02C59 /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		B92A4002226DE4E300A02C59 /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
+		B92A4004226DED1100A02C59 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		B95D5139226C5DEC0066488B /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		B95D513B226C5E490066488B /* Enemy_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_1.atlas; sourceTree = "<group>"; };
 		B95D513D226C72040066488B /* Enemy_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_2.atlas; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				B9AC1CA8226C994500DBAA37 /* Assets.swift */,
 				B9AC1CAC226CA40A00DBAA37 /* BitMaskCategory.swift */,
+				B92A4004226DED1100A02C59 /* SceneManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				B98530F12269A6A2006B8A63 /* AppDelegate.swift in Sources */,
 				B9AC1CA9226C994500DBAA37 /* Assets.swift in Sources */,
 				B95D513A226C5DEC0066488B /* Enemy.swift in Sources */,
+				B92A4005226DED1100A02C59 /* SceneManager.swift in Sources */,
 				B95D5144226C83D80066488B /* GreenPowerUp.swift in Sources */,
 				B985310B2269BB26006B8A63 /* Island.swift in Sources */,
 				B9E3AB37226C4B1C004D32EB /* PowepUp.swift in Sources */,

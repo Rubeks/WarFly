@@ -18,8 +18,23 @@ class GameScene: SKScene {
     private let hud = HUD()
     
     private let screenSize = UIScreen.main.bounds.size
+    
+    //339.
+    let sceneManager = SceneManager.shared
+    
+    //350. Если нужна пауза только для плюшек
+    //private var pauseNode = SKNode()
    
     override func didMove(to view: SKView) {
+        
+        //348. Снятин паузы
+        self.scene?.isPaused = false
+        
+        //341. Проверка сущетсвует ли сцена
+        guard sceneManager.gameScene == nil else { return }
+        
+        //340. Загрузка в синглтон первой игровой сцены
+        sceneManager.gameScene = self
         
         //74.
         configureStartScene()
@@ -123,6 +138,9 @@ class GameScene: SKScene {
     
     //151. Метод Создание плюшки с бонусом
     private func spawnPowerUp() {
+        
+        //352.Если нужна пауза только для плюшек
+        //addChild(pauseNode)
        
         let spawnAction = SKAction.run {
             let randomNumber = Int(arc4random_uniform(2))
@@ -134,7 +152,11 @@ class GameScene: SKScene {
             powerUp.position = CGPoint(x: CGFloat(randomPositionX), y: self.size.height + 100)
             
             powerUp.startMovement()
+            
             self.addChild(powerUp)
+            //351.Если нужна пауза только для плюшек
+            //self.pauseNode.addChild(powerUp)
+
         }
         
         //205. Время через которое появится новая плюшка
@@ -287,6 +309,12 @@ class GameScene: SKScene {
             
             //330. scaleMode такой же как и у GameVC
             pauseScene.scaleMode = .aspectFill
+            
+            //346. Сохранение состояния сцены в менеджере
+            sceneManager.gameScene = self
+            
+            //347. Пауза для всх объектов на сцене и их экшенов
+            self.scene?.isPaused = true
             
             //331. Переход при нажатие
             self.scene?.view?.presentScene(pauseScene, transition: transition)

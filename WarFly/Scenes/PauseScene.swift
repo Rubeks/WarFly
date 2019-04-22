@@ -10,6 +10,9 @@ import SpriteKit
 
 //315. Класс для сцены с паузой
 class PauseScene: SKScene {
+    
+    //342. Нужен для хранения сильной ссылки на сцену которая ушла с экрана при нажати на паузу
+    let sceneManager = SceneManager.shared
 
     override func didMove(to view: SKView) {
         
@@ -45,6 +48,9 @@ class PauseScene: SKScene {
         //322. Если под пальцем находится моя кнопка(проверка по имени)
         if node.name == "restart" {
             
+            //344. Удаление сцены из менеджера при рестарте
+            sceneManager.gameScene = nil
+            
             //323. То осуществляется переход через 1сек, crossFade - плавное растворение
             let transition = SKTransition.crossFade(withDuration: 1.0)
             
@@ -56,6 +62,30 @@ class PauseScene: SKScene {
             
             //326. Переход при нажатие
             self.scene?.view?.presentScene(gameScene, transition: transition)
+        }
+        
+            //332. Для возврата при нажате паузы
+        else if node.name == "resume" {
+            //333. То осуществляется переход через 1сек, crossFade - плавное растворение
+            let transition = SKTransition.crossFade(withDuration: 1.0)
+            
+            //343.
+            guard let gameScene = sceneManager.gameScene else { return }
+            
+            //335. scaleMode такой же как и у GameVC
+            gameScene.scaleMode = .aspectFill
+            
+            //336. Переход при нажатие
+            self.scene?.view?.presentScene(gameScene, transition: transition)
+        }
+    }
+    
+    //349.
+    override func update(_ currentTime: TimeInterval) {
+        if let gameScene = sceneManager.gameScene {
+            if gameScene.isPaused == false {
+                gameScene.isPaused = true
+            }
         }
     }
 }
