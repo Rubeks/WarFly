@@ -14,6 +14,9 @@ class Assets: SKSpriteNode {
     //237. Экземпляр синглтон
     static let shared = Assets()
     
+    //305. Свойство которое будет использоваться чтобы 1 раз только подгружался атлас сетов
+    var isLoaded = false
+    
     //238. Атласы с текстурами
     let yellowAmmoAtlas = SKTextureAtlas(named: "YellowAmmo")
     let playerPlaneAtlas = SKTextureAtlas(named: "PlayerPlane")

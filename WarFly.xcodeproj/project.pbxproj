@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B92A3FF7226DD76400A02C59 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A3FF6226DD76400A02C59 /* HUD.swift */; };
 		B92A3FFF226DDA1D00A02C59 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B92A3FFE226DDA1D00A02C59 /* Default-568h@2x.png */; };
+		B92A4001226DDDD800A02C59 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A4000226DDDD800A02C59 /* ButtonNode.swift */; };
 		B95D513A226C5DEC0066488B /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95D5139226C5DEC0066488B /* Enemy.swift */; };
 		B95D513C226C5E490066488B /* Enemy_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B95D513B226C5E490066488B /* Enemy_1.atlas */; };
 		B95D513E226C72040066488B /* Enemy_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B95D513D226C72040066488B /* Enemy_2.atlas */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		B92A3FF6226DD76400A02C59 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		B92A3FFE226DDA1D00A02C59 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		B92A4000226DDDD800A02C59 /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		B95D5139226C5DEC0066488B /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		B95D513B226C5E490066488B /* Enemy_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_1.atlas; sourceTree = "<group>"; };
 		B95D513D226C72040066488B /* Enemy_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_2.atlas; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		B92A3FFB226DD9B300A02C59 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B92A4000226DDDD800A02C59 /* ButtonNode.swift */,
 				B92A3FF6226DD76400A02C59 /* HUD.swift */,
 				B95D5139226C5DEC0066488B /* Enemy.swift */,
 				B9E3AB36226C4B1C004D32EB /* PowepUp.swift */,
@@ -285,6 +288,7 @@
 				B92A3FF7226DD76400A02C59 /* HUD.swift in Sources */,
 				B9CDCD90226C90490032AE66 /* Shot.swift in Sources */,
 				B98531092269AF70006B8A63 /* BackGround.swift in Sources */,
+				B92A4001226DDDD800A02C59 /* ButtonNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
