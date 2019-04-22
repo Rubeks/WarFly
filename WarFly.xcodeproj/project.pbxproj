@@ -10,6 +10,7 @@
 		B92A3FF7226DD76400A02C59 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A3FF6226DD76400A02C59 /* HUD.swift */; };
 		B92A3FFF226DDA1D00A02C59 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B92A3FFE226DDA1D00A02C59 /* Default-568h@2x.png */; };
 		B92A4001226DDDD800A02C59 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A4000226DDDD800A02C59 /* ButtonNode.swift */; };
+		B92A4003226DE4E400A02C59 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A4002226DE4E300A02C59 /* PauseScene.swift */; };
 		B95D513A226C5DEC0066488B /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95D5139226C5DEC0066488B /* Enemy.swift */; };
 		B95D513C226C5E490066488B /* Enemy_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B95D513B226C5E490066488B /* Enemy_1.atlas */; };
 		B95D513E226C72040066488B /* Enemy_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B95D513D226C72040066488B /* Enemy_2.atlas */; };
@@ -42,6 +43,7 @@
 		B92A3FF6226DD76400A02C59 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		B92A3FFE226DDA1D00A02C59 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B92A4000226DDDD800A02C59 /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
+		B92A4002226DE4E300A02C59 /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 		B95D5139226C5DEC0066488B /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		B95D513B226C5E490066488B /* Enemy_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_1.atlas; sourceTree = "<group>"; };
 		B95D513D226C72040066488B /* Enemy_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_2.atlas; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				B98530F62269A6A2006B8A63 /* GameScene.swift */,
 				B9AC1CAA226C9F3F00DBAA37 /* MenuScene.swift */,
+				B92A4002226DE4E300A02C59 /* PauseScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				B9E3AB37226C4B1C004D32EB /* PowepUp.swift in Sources */,
 				B9AC1CAD226CA40A00DBAA37 /* BitMaskCategory.swift in Sources */,
 				B9AC1CAB226C9F3F00DBAA37 /* MenuScene.swift in Sources */,
+				B92A4003226DE4E400A02C59 /* PauseScene.swift in Sources */,
 				B92A3FF7226DD76400A02C59 /* HUD.swift in Sources */,
 				B9CDCD90226C90490032AE66 /* Shot.swift in Sources */,
 				B98531092269AF70006B8A63 /* BackGround.swift in Sources */,

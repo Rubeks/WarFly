@@ -9,7 +9,7 @@
 import SpriteKit
 
 //302. Интерфейс пользователя UI
-class HUD: SKScene {
+class HUD: SKNode {
     
     //293. Свойство для бэкграунда для лэйбла
     let scoreBackground = SKSpriteNode(imageNamed: "scores")
@@ -51,6 +51,7 @@ class HUD: SKScene {
         menuButton.anchorPoint = CGPoint(x: 0.0, y: 0.0)    //центр кнопки будет в левом нижнем углу
         menuButton.position = CGPoint(x: 20, y: 20)
         menuButton.zPosition = 100
+        menuButton.name = "pause"
         addChild(menuButton)
         
         //301. -------------- Жизни игрока

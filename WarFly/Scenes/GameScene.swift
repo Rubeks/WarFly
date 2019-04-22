@@ -269,7 +269,30 @@ class GameScene: SKScene {
     
     //235. Срабатывает при нажатие на экран
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        playerFire()
+        
+        //246. Координаты куда нажал пальцем, self - сцена эта
+        let location = touches.first?.location(in: self)
+        
+        //247. Объект который находится под той точкой куда нажал пальцем
+        let node = self.atPoint(location!)
+        
+        //327. Если под пальцем находится моя кнопка(проверка по имени)
+        if node.name == "pause" {
+            
+            //328. То осуществляется переход через 1сек, crossFade - плавное растворение
+            let transition = SKTransition.doorway(withDuration: 1.0)
+            
+            //329. Размер сцены с самолетами = сцене с загрузочным экраном
+            let pauseScene = PauseScene(size: self.size)
+            
+            //330. scaleMode такой же как и у GameVC
+            pauseScene.scaleMode = .aspectFill
+            
+            //331. Переход при нажатие
+            self.scene?.view?.presentScene(pauseScene, transition: transition)
+        } else {
+              playerFire() //вызов стрельбы
+        }
     }
 }
 
