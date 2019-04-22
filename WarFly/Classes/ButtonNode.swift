@@ -15,7 +15,7 @@ class ButtonNode: SKSpriteNode {
     let lable: SKLabelNode = {
         
         //310. Настройка
-        let l = SKLabelNode(text: "whatever")
+        let l = SKLabelNode(text: "")
         l.fontColor = UIColor(red: 219 / 255, green: 226 / 255, blue: 215 / 255, alpha: 1.0)
         l.fontName = "AmericanTypewriter-Bold"
         l.fontSize = 25
@@ -26,14 +26,16 @@ class ButtonNode: SKSpriteNode {
     }()
     
     //311. Иниц в который передаю заголовок и имя изображения для бэкграунда
-    init(titled title: String, backgroundName: String) {
+    init(titled title: String?, backgroundName: String) {
         
         //312. Создаю тектуру из принятого имени
         let texture = SKTexture(imageNamed: backgroundName)
         
         super.init(texture: texture, color: .clear, size: texture.size())
         
-        lable.text = title.uppercased()
+        if let title = title {
+            lable.text = title.uppercased()
+        }
         addChild(lable)
     }
     

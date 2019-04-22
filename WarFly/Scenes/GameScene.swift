@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: ParentScene {
     
     //65.  Создаю плеера
     private var player: PlayerPlane!
@@ -18,9 +18,6 @@ class GameScene: SKScene {
     private let hud = HUD()
     
     private let screenSize = UIScreen.main.bounds.size
-    
-    //339.
-    let sceneManager = SceneManager.shared
     
     //350. Если нужна пауза только для плюшек
     //private var pauseNode = SKNode()

@@ -9,19 +9,18 @@
 import SpriteKit
 
 //315. Класс для сцены с паузой
-class PauseScene: SKScene {
-    
-    //342. Нужен для хранения сильной ссылки на сцену которая ушла с экрана при нажати на паузу
-    let sceneManager = SceneManager.shared
+class PauseScene: ParentScene {
 
     override func didMove(to view: SKView) {
         
         self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
         
-        //316. Заголовок сцены с паузой
+        //355. Создание заголовка сцены через вызов функции род.класса сцены
+        /*//316. Заголовок сцены с паузой
         let header = ButtonNode(titled: "pause", backgroundName: "header_background")
         header.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
-        self.addChild(header)
+        self.addChild(header)*/
+        setHeader(with: "pause", andBackground: "header_background")
         
         //317. Массив заголовков кнопок
         let titles = ["restart", "options", "resume"]
@@ -77,6 +76,22 @@ class PauseScene: SKScene {
             
             //336. Переход при нажатие
             self.scene?.view?.presentScene(gameScene, transition: transition)
+        }
+            //369. Для возврата при нажате паузы
+        else if node.name == "options" {
+           
+            //370. То осуществляется переход через 1сек, crossFade - плавное растворение
+            let transition = SKTransition.crossFade(withDuration: 1.0)
+            
+            let optionScene = OptionScene(size: self.size)
+            
+            optionScene.backScene = self
+            
+            //372. scaleMode такой же как и у GameVC
+            optionScene.scaleMode = .aspectFill
+            
+            //373. Переход при нажатие
+            self.scene?.view?.presentScene(optionScene, transition: transition)
         }
     }
     

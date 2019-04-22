@@ -10,7 +10,7 @@ import SpriteKit
 import GameplayKit
 
 //243. Стартовая сцена
-class MenuScene: SKScene {
+class MenuScene: ParentScene {
     
     override func didMove(to view: SKView) {
         
@@ -24,10 +24,13 @@ class MenuScene: SKScene {
         
         self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
         
-        //307. Заголовок игры
-        let header = SKSpriteNode(imageNamed: "header1")
-        header.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
-        self.addChild(header)
+        //356. Создание заголовка сцены через вызов функции род.класса сцен
+        /*//307. Заголовок игры
+         let header = SKSpriteNode(imageNamed: "header1")
+         header.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 150)
+         self.addChild(header)*/
+        setHeader(with: nil, andBackground: "header1")
+       
         
         //313. Массив заголовков кнопок
         let titles = ["play", "options", "best"]
@@ -39,7 +42,7 @@ class MenuScene: SKScene {
             button.name = title       //нужно имя для того чтобы сработал метод touchesBegan
             button.lable.name = title //нужно имя для того чтобы сработал метод touchesBegan
             addChild(button)
-        }   
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -64,6 +67,22 @@ class MenuScene: SKScene {
             
             //252. Переход при нажатие
             self.scene?.view?.presentScene(gameScene, transition: transition)
+        }
+            //369. Для возврата при нажате паузы
+        else if node.name == "options" {
+            
+            //370. То осуществляется переход через 1сек, crossFade - плавное растворение
+            let transition = SKTransition.crossFade(withDuration: 1.0)
+            
+            let optionScene = OptionScene(size: self.size)
+            
+            optionScene.backScene = self
+            
+            //372. scaleMode такой же как и у GameVC
+            optionScene.scaleMode = .aspectFill
+            
+            //373. Переход при нажатие
+            self.scene?.view?.presentScene(optionScene, transition: transition)
         }
     }
 }

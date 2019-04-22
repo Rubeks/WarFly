@@ -12,6 +12,8 @@
 		B92A4001226DDDD800A02C59 /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A4000226DDDD800A02C59 /* ButtonNode.swift */; };
 		B92A4003226DE4E400A02C59 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A4002226DE4E300A02C59 /* PauseScene.swift */; };
 		B92A4005226DED1100A02C59 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A4004226DED1100A02C59 /* SceneManager.swift */; };
+		B92A4007226DF61400A02C59 /* ParentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A4006226DF61400A02C59 /* ParentScene.swift */; };
+		B92A4009226DF94D00A02C59 /* OptionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92A4008226DF94D00A02C59 /* OptionScene.swift */; };
 		B95D513A226C5DEC0066488B /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95D5139226C5DEC0066488B /* Enemy.swift */; };
 		B95D513C226C5E490066488B /* Enemy_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B95D513B226C5E490066488B /* Enemy_1.atlas */; };
 		B95D513E226C72040066488B /* Enemy_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B95D513D226C72040066488B /* Enemy_2.atlas */; };
@@ -46,6 +48,8 @@
 		B92A4000226DDDD800A02C59 /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		B92A4002226DE4E300A02C59 /* PauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 		B92A4004226DED1100A02C59 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
+		B92A4006226DF61400A02C59 /* ParentScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentScene.swift; sourceTree = "<group>"; };
+		B92A4008226DF94D00A02C59 /* OptionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionScene.swift; sourceTree = "<group>"; };
 		B95D5139226C5DEC0066488B /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		B95D513B226C5E490066488B /* Enemy_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_1.atlas; sourceTree = "<group>"; };
 		B95D513D226C72040066488B /* Enemy_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_2.atlas; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				B9AC1CA8226C994500DBAA37 /* Assets.swift */,
 				B9AC1CAC226CA40A00DBAA37 /* BitMaskCategory.swift */,
 				B92A4004226DED1100A02C59 /* SceneManager.swift */,
+				B92A4008226DF94D00A02C59 /* OptionScene.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 		B92A3FFD226DD9DE00A02C59 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				B92A4006226DF61400A02C59 /* ParentScene.swift */,
 				B98530F62269A6A2006B8A63 /* GameScene.swift */,
 				B9AC1CAA226C9F3F00DBAA37 /* MenuScene.swift */,
 				B92A4002226DE4E300A02C59 /* PauseScene.swift */,
@@ -292,7 +298,9 @@
 				B9E3AB37226C4B1C004D32EB /* PowepUp.swift in Sources */,
 				B9AC1CAD226CA40A00DBAA37 /* BitMaskCategory.swift in Sources */,
 				B9AC1CAB226C9F3F00DBAA37 /* MenuScene.swift in Sources */,
+				B92A4007226DF61400A02C59 /* ParentScene.swift in Sources */,
 				B92A4003226DE4E400A02C59 /* PauseScene.swift in Sources */,
+				B92A4009226DF94D00A02C59 /* OptionScene.swift in Sources */,
 				B92A3FF7226DD76400A02C59 /* HUD.swift in Sources */,
 				B9CDCD90226C90490032AE66 /* Shot.swift in Sources */,
 				B98531092269AF70006B8A63 /* BackGround.swift in Sources */,
