@@ -13,6 +13,10 @@ import GameplayKit
 class MenuScene: SKScene {
     
     override func didMove(to view: SKView) {
+        
+        //240. Подгрузка всех атласов
+        Assets.shared.preloadAssets()
+        
         self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
         
         //244. Текстура кнопки

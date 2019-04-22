@@ -26,10 +26,10 @@ class Enemy: SKSpriteNode {
         super.init(texture: texture, color: .clear, size: CGSize(width: 221, height: 204))
         
         //162. Масштаб по х
-        self.xScale = 0.5
+        self.xScale = 0.35
         
         //163. Масштаб по У - т.к самолет врага должен быть направлен в противоположную сторону
-        self.yScale = -0.5
+        self.yScale = -0.35
         
         //164. На одном уровне с пользователем
         self.zPosition = 20
@@ -43,13 +43,13 @@ class Enemy: SKSpriteNode {
         //260. Т.е если что-то врезается в самолет он будет двигаться
         self.physicsBody?.isDynamic = true
         
-        self.physicsBody?.categoryBitMask = BitMaskCategory.enemy
+        self.physicsBody?.categoryBitMask = BitMaskCategory.enemy.rawValue
         
         //261. С чем может взаимодействовать(самолет юзера и пули)
-        self.physicsBody?.collisionBitMask = BitMaskCategory.player | BitMaskCategory.shot
+        self.physicsBody?.collisionBitMask = BitMaskCategory.player.rawValue | BitMaskCategory.shot.rawValue
         
         //262. Регистрация столкновений с самолетом юзера и пуль
-        self.physicsBody?.contactTestBitMask = BitMaskCategory.player | BitMaskCategory.shot
+        self.physicsBody?.contactTestBitMask = BitMaskCategory.player.rawValue | BitMaskCategory.shot.rawValue
     }
     
     required init?(coder aDecoder: NSCoder) {

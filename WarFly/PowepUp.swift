@@ -43,7 +43,7 @@ class PowerUp: SKSpriteNode {
         super.init(texture: texture, color: .clear, size: initialSize)
         
         //199. Изменение размера плюшки
-        self.setScale(0.7)
+        self.setScale(0.6)
         
         //142. Новое имя этого спрайта
         self.name = "sprite"
@@ -57,13 +57,13 @@ class PowerUp: SKSpriteNode {
         //264. Т.е если что-то врезается в плюшку он будет двигаться или чтото с ним будет происходить
         self.physicsBody?.isDynamic = true
         
-        self.physicsBody?.categoryBitMask = BitMaskCategory.powerUp
+        self.physicsBody?.categoryBitMask = BitMaskCategory.powerUp.rawValue
         
         //265. С чем может взаимодействовать(самолет юзера)
-        self.physicsBody?.collisionBitMask = BitMaskCategory.player
+        self.physicsBody?.collisionBitMask = BitMaskCategory.player.rawValue
         
         //266. Регистрация столкновений с самолетом юзера
-        self.physicsBody?.contactTestBitMask = BitMaskCategory.player
+        self.physicsBody?.contactTestBitMask = BitMaskCategory.player.rawValue
         
     }
     

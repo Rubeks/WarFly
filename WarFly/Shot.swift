@@ -43,7 +43,7 @@ class Shot: SKSpriteNode {
         super.init(texture: texture, color: .clear, size: initialSize)
         
         //219. Изменение размера выстрела
-        self.setScale(0.3)
+        self.setScale(0.25)
         
         //220. Новое имя этого спрайта (пример: для удаления с экрана)
         self.name = "shotSprite"
@@ -57,13 +57,13 @@ class Shot: SKSpriteNode {
         //268. Т.е если пули будут врезаться во врагом они не будут смещаться
         self.physicsBody?.isDynamic = false
         
-        self.physicsBody?.categoryBitMask = BitMaskCategory.shot
+        self.physicsBody?.categoryBitMask = BitMaskCategory.shot.rawValue
         
         //269. С чем может взаимодействовать(самолеты врага)
-        self.physicsBody?.collisionBitMask = BitMaskCategory.enemy
+        self.physicsBody?.collisionBitMask = BitMaskCategory.enemy.rawValue
         
         //270. Регистрация столкновений с самолетом врага
-        self.physicsBody?.contactTestBitMask = BitMaskCategory.enemy
+        self.physicsBody?.contactTestBitMask = BitMaskCategory.enemy.rawValue
     }
     
     // Инициализатор по умолчанию

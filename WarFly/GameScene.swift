@@ -14,6 +14,20 @@ class GameScene: SKScene {
     //65.  Создаю плеера
     var player: PlayerPlane!
     
+    //293. Свойство для бэкграунда для лэйбла
+    let scoreBackground = SKSpriteNode(imageNamed: "scores")
+    
+    //294. Лэйбл с очками
+    let scoreLabel = SKLabelNode(text: "1000")
+    
+    //295. кнопка меню
+    let menuButton = SKSpriteNode(imageNamed: "menu")
+    
+    //296. Жизни игрока
+    let life1 = SKSpriteNode(imageNamed: "life")
+    let life2 = SKSpriteNode(imageNamed: "life")
+    let life3 = SKSpriteNode(imageNamed: "life")
+
     override func didMove(to view: SKView) {
         
         //74.
@@ -23,15 +37,15 @@ class GameScene: SKScene {
         spawnClouds()
         spawnIslands()
         
-        //157. Чтобы не появлялся в момент загрузки белый квадрат вместо самолета
-        let deadline = DispatchTime.now() + .nanoseconds(1)
-        DispatchQueue.main.asyncAfter(deadline: deadline) { [unowned self] in
-            
-            //[unowned self] типо уменьшает массив сильных ссылок
-            
-            //108.
-            self.player.performFly()
-        }
+        //291. Удаляю 157 т.к теперь аласы грузятся на другой сцене
+        /*//157. Чтобы не появлялся в момент загрузки белый квадрат вместо самолета
+         let deadline = DispatchTime.now() + .nanoseconds(1)
+         DispatchQueue.main.asyncAfter(deadline: deadline) { [unowned self] in */
+        
+        //[unowned self] типо уменьшает массив сильных ссылок
+        
+        //108.
+        self.player.performFly()
         
         //151.1  Создание плюшки с бонусом
         spawnPowerUp()
@@ -45,8 +59,48 @@ class GameScene: SKScene {
         //281. Отключение гравитации(чтобы самолет не падал вниз экрана)
         physicsWorld.gravity = CGVector.zero
         
+        //299. Вызов отрисовки пользователтского UI
+        configureUI()
         
+    }
+    
+    //292. Настройка UI ( добавление жизней и лейбла с очками)
+    private func configureUI() {
         
+        //-------------- Задник под очки
+        //297. Центр текстуры т.е сейчас он справа в центре по вертикали
+        scoreBackground.anchorPoint = CGPoint(x: 1.0, y: 0.5)
+        
+        //298. Положение задника ( левый верхний угол с отступом в 10)
+        scoreBackground.position = CGPoint(x: scoreBackground.frame.width + 10, y: self.size.height - scoreBackground.frame.height / 2 - 10)
+        
+        scoreBackground.zPosition = 99
+        addChild(scoreBackground)
+        
+        //299. -------------- Лэйбл с очками
+        scoreLabel.horizontalAlignmentMode = .right     //выравнивание
+        scoreLabel.verticalAlignmentMode = .center
+        scoreLabel.position = CGPoint(x: -10, y: 3)     //позиция относительно родителя будет
+        scoreLabel.zPosition = 100                      //высота слоя
+        scoreLabel.fontName = "AmericanTypewriter-Bold"
+        scoreLabel.fontSize = 30
+        scoreBackground.addChild(scoreLabel)
+        
+        //300. -------------- Кнопка меню
+        menuButton.anchorPoint = CGPoint(x: 0.0, y: 0.0)    //центр кнопки будет в левом нижнем углу
+        menuButton.position = CGPoint(x: 20, y: 20)
+        menuButton.zPosition = 100
+        addChild(menuButton)
+        
+        //301. -------------- Жизни игрока
+        let lifes = [life1, life2, life3]
+        for (index, life) in lifes.enumerated() {
+            life.anchorPoint = CGPoint(x: 0.0, y: 0.0)
+            life.position = CGPoint(x: self.size.width - CGFloat(index + 1) * (life.size.width + 3), y: 20)
+            life.zPosition = 100
+            
+            addChild(life)
+        }  
     }
     
     //172. Метод для создания врага
@@ -267,6 +321,8 @@ extension GameScene:  SKPhysicsContactDelegate {
     //284. Начало контакта объектов
     func didBegin(_ contact: SKPhysicsContact) {
         
+        //290.  Все с @285 до @287 удаляю и делаю через новые битовые маски.
+        /*
         //285. Сюда присваиваются сталкивающиеся физические тела
         let bodyA = contact.bodyA.categoryBitMask
         let bodyB = contact.bodyB.categoryBitMask
@@ -284,6 +340,15 @@ extension GameScene:  SKPhysicsContactDelegate {
             print("powerUp vs player")
         } else if bodyA == shot && bodyB == enemy || bodyB == shot && bodyA == enemy {
             print("enemy vs shot")
+        } */
+        //291. Определяю контактную котегорию(кто с кем сталкивается)
+        let contactCategory: BitMaskCategory = [contact.bodyA.category, contact.bodyB.category]
+        switch contactCategory {
+        case [.enemy, .player]: print("enemy vs player")
+            case [.powerUp, .player]: print("powerUp vs player")
+            case [.enemy, .shot]: print("enemy vs shot")
+        default:
+            preconditionFailure("Не возможно определить категорию столкновения")
         }
 
     }

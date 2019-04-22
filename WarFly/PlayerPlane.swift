@@ -47,7 +47,7 @@ class PlayerPlane: SKSpriteNode {
         let playerPlane = PlayerPlane(texture: playerPlaneTexture)
         
         //64. Масштаб самолета
-        playerPlane.setScale(0.5)
+        playerPlane.setScale(0.35)
         playerPlane.position = point
         playerPlane.zPosition = 40
         
@@ -57,13 +57,13 @@ class PlayerPlane: SKSpriteNode {
         //256. Т.е если что-то врезается в самолет он не двигается он как стена
         playerPlane.physicsBody?.isDynamic = false
         
-        playerPlane.physicsBody?.categoryBitMask = BitMaskCategory.player
+        playerPlane.physicsBody?.categoryBitMask = BitMaskCategory.player.rawValue
         
         //257. С чем может взаимодействовать(самолеты врагов и пули)
-        playerPlane.physicsBody?.collisionBitMask = BitMaskCategory.enemy | BitMaskCategory.powerUp
+        playerPlane.physicsBody?.collisionBitMask = BitMaskCategory.enemy.rawValue | BitMaskCategory.powerUp.rawValue
         
         //258. Регистрация столкновений с самолетом врагов и пуль 
-        playerPlane.physicsBody?.contactTestBitMask = BitMaskCategory.enemy | BitMaskCategory.powerUp
+        playerPlane.physicsBody?.contactTestBitMask = BitMaskCategory.enemy.rawValue | BitMaskCategory.powerUp.rawValue
         
         return playerPlane
     }
