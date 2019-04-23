@@ -42,6 +42,8 @@
 		B9D09702226EE92C00777AAF /* EnemyExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = B9D09700226EE92C00777AAF /* EnemyExplosion.sks */; };
 		B9D09703226EE92C00777AAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9D09701226EE92C00777AAF /* Assets.xcassets */; };
 		B9D09706226EEF6000777AAF /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D09705226EEF6000777AAF /* GameOverScene.swift */; };
+		B9D09709226EFCDB00777AAF /* hitSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9D09707226EFCDB00777AAF /* hitSound.wav */; };
+		B9D0970A226EFCDB00777AAF /* backgroundMusic.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B9D09708226EFCDB00777AAF /* backgroundMusic.m4a */; };
 		B9E3AB37226C4B1C004D32EB /* PowepUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E3AB36226C4B1C004D32EB /* PowepUp.swift */; };
 		B9E3AB39226C4C01004D32EB /* GreenPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B9E3AB38226C4C01004D32EB /* GreenPowerUp.atlas */; };
 /* End PBXBuildFile section */
@@ -84,6 +86,8 @@
 		B9D09700226EE92C00777AAF /* EnemyExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EnemyExplosion.sks; sourceTree = "<group>"; };
 		B9D09701226EE92C00777AAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9D09705226EEF6000777AAF /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		B9D09707226EFCDB00777AAF /* hitSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitSound.wav; sourceTree = "<group>"; };
+		B9D09708226EFCDB00777AAF /* backgroundMusic.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = backgroundMusic.m4a; sourceTree = "<group>"; };
 		B9E3AB36226C4B1C004D32EB /* PowepUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowepUp.swift; sourceTree = "<group>"; };
 		B9E3AB38226C4C01004D32EB /* GreenPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenPowerUp.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +110,8 @@
 				B98530FA2269A6A2006B8A63 /* Main.storyboard */,
 				B98530FD2269A6A4006B8A63 /* Assets.xcassets */,
 				B98530FF2269A6A5006B8A63 /* LaunchScreen.storyboard */,
+				B9D09708226EFCDB00777AAF /* backgroundMusic.m4a */,
+				B9D09707226EFCDB00777AAF /* hitSound.wav */,
 				B98531022269A6A5006B8A63 /* Info.plist */,
 			);
 			path = "Supporting files";
@@ -284,11 +290,13 @@
 			files = (
 				B95D513E226C72040066488B /* Enemy_2.atlas in Resources */,
 				B95D513C226C5E490066488B /* Enemy_1.atlas in Resources */,
+				B9D0970A226EFCDB00777AAF /* backgroundMusic.m4a in Resources */,
 				B98530FC2269A6A2006B8A63 /* Main.storyboard in Resources */,
 				B92A3FFF226DDA1D00A02C59 /* Default-568h@2x.png in Resources */,
 				B9AC1CA7226C980A00DBAA37 /* YellowAmmo.atlas in Resources */,
 				B9E3AB39226C4C01004D32EB /* GreenPowerUp.atlas in Resources */,
 				B9D09702226EE92C00777AAF /* EnemyExplosion.sks in Resources */,
+				B9D09709226EFCDB00777AAF /* hitSound.wav in Resources */,
 				B98531112269DA76006B8A63 /* PlayerPlane.atlas in Resources */,
 				B98530FE2269A6A4006B8A63 /* Assets.xcassets in Resources */,
 				B95D5140226C7E680066488B /* BluePowerUp.atlas in Resources */,

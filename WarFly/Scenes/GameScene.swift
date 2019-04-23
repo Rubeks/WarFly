@@ -11,6 +11,9 @@ import GameplayKit
 
 class GameScene: ParentScene {
     
+    //441. Свойство для музыки
+    var backgroundMusic: SKAudioNode!
+    
     //65.  Создаю плеера
     private var player: PlayerPlane!
     
@@ -45,6 +48,16 @@ class GameScene: ParentScene {
     //private var pauseNode = SKNode()
     
     override func didMove(to view: SKView) {
+        
+        //442. Путь к файлу с треком
+        if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "m4a") {
+            
+            //443. Добавление трека в свойство
+            backgroundMusic = SKAudioNode(url: musicURL)
+            
+            //444. Воспроизведенеи трека
+            addChild(backgroundMusic)
+        }
         
         //348. Снятин паузы
         self.scene?.isPaused = false
@@ -464,11 +477,15 @@ extension GameScene:  SKPhysicsContactDelegate {
         case [.enemy, .shot]: print("enemy vs shot")
         
         //430. Если столкновение произошло и один из нодов уже нил то ничего не происходит
-        if contact.bodyA.node?.parent != nil {
+        if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil{
             
             //431. Удаление с экрана обоих нодов которые столкнулись
             contact.bodyA.node?.removeFromParent()
             contact.bodyB.node?.removeFromParent()
+            
+            //445. Воспроизведение звука при попадании выстрела
+            self.run(SKAction.playSoundFileNamed("hitSound", waitForCompletion: false))
+            
             
             //432. Добавление очков
             hud.score += 5
