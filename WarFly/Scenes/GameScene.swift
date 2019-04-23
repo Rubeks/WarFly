@@ -19,9 +19,31 @@ class GameScene: ParentScene {
     
     private let screenSize = UIScreen.main.bounds.size
     
+    //397. Свойство для жизней игрока
+    private var lives = 3 {
+        didSet {
+            switch lives {
+            case 3:
+                hud.life1.isHidden = false
+                hud.life2.isHidden = false
+                hud.life3.isHidden = false
+            case 2:
+                hud.life1.isHidden = false
+                hud.life2.isHidden = false
+                hud.life3.isHidden = true
+            case 1:
+                hud.life1.isHidden = false
+                hud.life2.isHidden = true
+                hud.life3.isHidden = true
+            default:
+                break
+            }
+        }
+    }
+    
     //350. Если нужна пауза только для плюшек
     //private var pauseNode = SKNode()
-   
+    
     override func didMove(to view: SKView) {
         
         //348. Снятин паузы
@@ -138,7 +160,7 @@ class GameScene: ParentScene {
         
         //352.Если нужна пауза только для плюшек
         //addChild(pauseNode)
-       
+        
         let spawnAction = SKAction.run {
             let randomNumber = Int(arc4random_uniform(2))
             let powerUp = randomNumber == 1 ? BluePowerUp() : GreenPowerUp()
@@ -153,7 +175,7 @@ class GameScene: ParentScene {
             self.addChild(powerUp)
             //351.Если нужна пауза только для плюшек
             //self.pauseNode.addChild(powerUp)
-
+            
         }
         
         //205. Время через которое появится новая плюшка
@@ -183,6 +205,19 @@ class GameScene: ParentScene {
                 //                }
             }
         }
+        
+        //434. Удаление плюшек с экрана
+        enumerateChildNodes(withName: "bluePowerUp") { (node, stop) in
+            if node.position.y <= -100 {
+                node.removeFromParent()
+            }
+        }
+        enumerateChildNodes(withName: "greenPowerUp") { (node, stop) in
+            if node.position.y <= -100 {
+                node.removeFromParent()
+            }
+        }
+        
         
         //231. Удаление с экрана выстрела
         enumerateChildNodes(withName: "shotSprite") { (node, stop) in
@@ -316,7 +351,7 @@ class GameScene: ParentScene {
             //331. Переход при нажатие
             self.scene?.view?.presentScene(pauseScene, transition: transition)
         } else {
-              playerFire() //вызов стрельбы
+            playerFire() //вызов стрельбы
         }
     }
 }
@@ -327,40 +362,140 @@ extension GameScene:  SKPhysicsContactDelegate {
     //284. Начало контакта объектов
     func didBegin(_ contact: SKPhysicsContact) {
         
+        //392. Текстура взрыва
+        let explosion = SKEmitterNode(fileNamed: "EnemyExplosion")
+        
+        //393. Точка прикосновения двух нодов(самолет и пуля или самолет и самолет)
+        let contactPoint = contact.contactPoint
+        
+        //394. Взрыв будет в точке соприкосновения
+        explosion?.position = contactPoint
+        explosion?.zPosition = 25
+        
+        //395. Анимация
+        let waitForExplosionAction = SKAction.wait(forDuration: 1)
+        
         //290.  Все с @285 до @287 удаляю и делаю через новые битовые маски.
         /*
-        //285. Сюда присваиваются сталкивающиеся физические тела
-        let bodyA = contact.bodyA.categoryBitMask
-        let bodyB = contact.bodyB.categoryBitMask
-        
-        //286. Маски моих херовин
-        let player = BitMaskCategory.player
-        let enemy = BitMaskCategory.enemy
-        let shot = BitMaskCategory.shot
-        let powerUp = BitMaskCategory.powerUp
-        
-        //287. Проверка на столкновение битовых маск
-        if bodyA == player && bodyB == enemy || bodyB == player && bodyA == enemy {
-            print("enemy vs player")
-        } else if bodyA == player && bodyB == powerUp || bodyB == player && bodyA == powerUp {
-            print("powerUp vs player")
-        } else if bodyA == shot && bodyB == enemy || bodyB == shot && bodyA == enemy {
-            print("enemy vs shot")
-        } */
+         //285. Сюда присваиваются сталкивающиеся физические тела
+         let bodyA = contact.bodyA.categoryBitMask
+         let bodyB = contact.bodyB.categoryBitMask
+         
+         //286. Маски моих херовин
+         let player = BitMaskCategory.player
+         let enemy = BitMaskCategory.enemy
+         let shot = BitMaskCategory.shot
+         let powerUp = BitMaskCategory.powerUp
+         
+         //287. Проверка на столкновение битовых маск
+         if bodyA == player && bodyB == enemy || bodyB == player && bodyA == enemy {
+         print("enemy vs player")
+         } else if bodyA == player && bodyB == powerUp || bodyB == player && bodyA == powerUp {
+         print("powerUp vs player")
+         } else if bodyA == shot && bodyB == enemy || bodyB == shot && bodyA == enemy {
+         print("enemy vs shot")
+         } */
         //291. Определяю контактную котегорию(кто с кем сталкивается)
         let contactCategory: BitMaskCategory = [contact.bodyA.category, contact.bodyB.category]
         switch contactCategory {
+            
+            //---------------------------
         case [.enemy, .player]: print("enemy vs player")
-            case [.powerUp, .player]: print("powerUp vs player")
-            case [.enemy, .shot]: print("enemy vs shot")
+        //390. Условие где определяется где самолет юзера а где вражеский чтобы удалить при столкновении врага
+        if contact.bodyA.node?.name == "sprite" {
+            //398. Удаление нода при соприкосновении
+            if contact.bodyA.node?.parent != nil {
+                contact.bodyA.node?.removeFromParent()
+                lives -= 1
+            }
+            
+        } else {
+            if contact.bodyB.node?.parent != nil {
+                contact.bodyB.node?.removeFromParent()
+                lives -= 1
+            }
+        }
+        //396. Вызов анимации взрыва
+        addChild(explosion!)
+        self.run(waitForExplosionAction) { explosion?.removeFromParent() }
+            
+        //399. Действия когда жизни закончились
+        if lives == 0 {
+            //422.
+            let gameOverScene = GameOverScene(size: self.size)
+            
+            //423. scaleMode такой же как и у GameVC
+            gameOverScene.scaleMode = .aspectFill
+            
+            let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
+            
+            //424. Переход
+            self.scene?.view?.presentScene(gameOverScene, transition: transition)
+            }
+         
+        //---------------------------
+            //434.
+        case [.powerUp, .player]: print("powerUp vs player")
+        
+        //435. Проверка столкнулись ли ноды
+        if contact.bodyA.node?.parent != nil && contact.bodyB.node?.parent != nil {
+            
+            //436. Столкновение с синей банкой и рес жизней
+            if contact.bodyA.node?.name == "bluePowerUp" {
+                contact.bodyA.node?.removeFromParent()
+                lives = 3
+                player.bluePowerUp()
+            } else if contact.bodyB.node?.name == "bluePowerUp" {
+                contact.bodyB.node?.removeFromParent()
+                lives = 3
+                player.bluePowerUp()
+            }
+            
+            if contact.bodyA.node?.name == "greenPowerUp" {
+                contact.bodyA.node?.removeFromParent()
+                player.greenPowerUp()
+            } else {
+                contact.bodyB.node?.removeFromParent()
+                player.greenPowerUp()
+            }
+        }
+            
+        //---------------------------
+        case [.enemy, .shot]: print("enemy vs shot")
+        
+        //430. Если столкновение произошло и один из нодов уже нил то ничего не происходит
+        if contact.bodyA.node?.parent != nil {
+            
+            //431. Удаление с экрана обоих нодов которые столкнулись
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
+            
+            //432. Добавление очков
+            hud.score += 5
+            
+            //433ю Добавление взрыва
+            addChild(explosion!)
+            self.run(waitForExplosionAction) { explosion?.removeFromParent() }
+
+        }
+        
+        /*//425. Добавление очков при попадании
+        hud.score += 5
+        
+        //391. Удаление врага и пули при столкновении друг с другом
+        contact.bodyA.node?.removeFromParent()
+        contact.bodyB.node?.removeFromParent()
+        addChild(explosion!)
+        self.run(waitForExplosionAction) { explosion?.removeFromParent() }*/
+            
+        //---------------------------
         default:
             preconditionFailure("Не возможно определить категорию столкновения")
         }
-
     }
     
     //285. Окончание контакта
     func didEnd(_ contact: SKPhysicsContact) {
-
+        
     }
 }

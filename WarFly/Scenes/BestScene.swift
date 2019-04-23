@@ -58,7 +58,6 @@ class BestScene: ParentScene {
         //384. Если под пальцем находится моя кнопка(проверка по имени)
         if node.name == "back" {
             
-            
             //365. То осуществляется переход через 1сек, crossFade - плавное растворение
             let transition = SKTransition.crossFade(withDuration: 1.0)
             
@@ -71,6 +70,4 @@ class BestScene: ParentScene {
             self.scene?.view?.presentScene(backScene, transition: transition)
         }
     }
-    
-    
 }

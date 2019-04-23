@@ -15,7 +15,14 @@ class HUD: SKNode {
     let scoreBackground = SKSpriteNode(imageNamed: "scores")
     
     //294. Лэйбл с очками
-    let scoreLabel = SKLabelNode(text: "1000")
+    let scoreLabel = SKLabelNode(text: "0")
+    
+    //426. Свойство для очков на экране
+    var score: Int = 0 {
+        didSet {
+            scoreLabel.text = score.description
+        }
+    }
     
     //295. кнопка меню
     let menuButton = SKSpriteNode(imageNamed: "menu")
