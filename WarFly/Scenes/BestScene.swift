@@ -11,10 +11,16 @@ import SpriteKit
 //374. Сцена с очками
 class BestScene: ParentScene {
     
-    //375. Массив с очками
-    var places = [10, 100, 10000]
+    //460. Заменяю
+    /*//375. Массив с очками
+    var places = [10, 100, 10000] */
+    var places: [Int]!
 
     override func didMove(to view: SKView) {
+        
+        //461. Загрузка очков
+        gameSettings.loadScores()
+        places = gameSettings.highscore
         
         //376. Заголовок сцены
         setHeader(with: "best", andBackground: "header_background")
@@ -31,10 +37,10 @@ class BestScene: ParentScene {
             addChild(button)
         }
         
-        let topPlaces = places.sorted { $0 > $1 }.prefix(3) //$0 > $1 элемент сева должен быть больше элемента справа, prefix - обрезка элементов до 3
+        //let topPlaces = places.sorted { $0 > $1 }.prefix(3); $0 > $1 элемент сева должен быть больше элемента справа, prefix - обрезка элементов до 3
         
         //379. Создание надписи
-        for (index, value) in topPlaces.enumerated() {
+        for (index, value) in places.enumerated() {
             
             //380. Настройка
             let l = SKLabelNode(text: value.description)

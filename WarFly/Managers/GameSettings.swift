@@ -16,16 +16,24 @@ class GameSettings: NSObject {
     var isMusic = true
     var isSound = true
     
+    //457. Для хранения результатов
+    var highscore: [Int] = []
+    
     let musicKey = "music"
     let soundKey = "sound"
     
+    let highscoreKey = "highscore"
+    
+    //458. Сохранение результата при геймовере
+    var currentScore = 0
+    
     override init() {
         super.init()
-        
         loadGameSettings()
-        
+        loadScores()
     }
     
+    //--------------------
     func saveGameSettings() {
         ud.set(isMusic, forKey: musicKey)
         ud.set(isSound, forKey: soundKey)
@@ -36,6 +44,18 @@ class GameSettings: NSObject {
             isMusic = ud.bool(forKey: musicKey)
             isSound = ud.bool(forKey: soundKey)
         }
-       
+    }
+    
+    //--------------------
+    func saveScores() {
+        highscore.append(currentScore)
+        highscore = Array(highscore.sorted { $0 > $1 }.prefix(3))
+        ud.set(highscore, forKey: highscoreKey)
+        ud.synchronize()
+    }
+    
+    func loadScores() {
+        guard ud.value(forKey: highscoreKey) != nil else { return }
+        highscore = ud.array(forKey: highscoreKey) as! [Int]
     }
 }

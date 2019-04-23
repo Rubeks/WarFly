@@ -439,6 +439,11 @@ extension GameScene:  SKPhysicsContactDelegate {
             
         //399. Действия когда жизни закончились
         if lives == 0 {
+            
+            //459. Сохранение очков
+            gameSettings.currentScore = hud.score
+            gameSettings.saveScores()
+            
             //422.
             let gameOverScene = GameOverScene(size: self.size)
             
@@ -494,15 +499,12 @@ extension GameScene:  SKPhysicsContactDelegate {
                 self.run(SKAction.playSoundFileNamed("hitSound", waitForCompletion: false))
             }
             
-            
-            
             //432. Добавление очков
             hud.score += 5
             
             //433ю Добавление взрыва
             addChild(explosion!)
             self.run(waitForExplosionAction) { explosion?.removeFromParent() }
-
         }
         
         /*//425. Добавление очков при попадании
