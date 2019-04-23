@@ -10,6 +10,9 @@ import SpriteKit
 
 //352.
 class ParentScene: SKScene {
+    
+    //448. Для доступа к настройкам
+    let gameSettings = GameSettings()
 
     //339.
     let sceneManager = SceneManager.shared

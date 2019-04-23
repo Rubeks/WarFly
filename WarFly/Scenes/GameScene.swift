@@ -49,15 +49,20 @@ class GameScene: ParentScene {
     
     override func didMove(to view: SKView) {
         
-        //442. Путь к файлу с треком
-        if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "m4a") {
-            
-            //443. Добавление трека в свойство
-            backgroundMusic = SKAudioNode(url: musicURL)
-            
-            //444. Воспроизведенеи трека
-            addChild(backgroundMusic)
+        //455. Проверка по настройкам музыки для ее воспроизведения
+        gameSettings.loadGameSettings()
+        if gameSettings.isMusic && backgroundMusic == nil {
+            //442. Путь к файлу с треком
+            if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "m4a") {
+                
+                //443. Добавление трека в свойство
+                backgroundMusic = SKAudioNode(url: musicURL)
+                
+                //444. Воспроизведенеи трека
+                addChild(backgroundMusic)
+            }
         }
+        
         
         //348. Снятин паузы
         self.scene?.isPaused = false
@@ -483,8 +488,12 @@ extension GameScene:  SKPhysicsContactDelegate {
             contact.bodyA.node?.removeFromParent()
             contact.bodyB.node?.removeFromParent()
             
-            //445. Воспроизведение звука при попадании выстрела
-            self.run(SKAction.playSoundFileNamed("hitSound", waitForCompletion: false))
+            //456. Проверка звука если выключен не воспроизведется
+            if gameSettings.isSound {
+                //445. Воспроизведение звука при попадании выстрела
+                self.run(SKAction.playSoundFileNamed("hitSound", waitForCompletion: false))
+            }
+            
             
             
             //432. Добавление очков

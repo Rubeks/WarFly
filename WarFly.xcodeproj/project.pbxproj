@@ -44,6 +44,7 @@
 		B9D09706226EEF6000777AAF /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D09705226EEF6000777AAF /* GameOverScene.swift */; };
 		B9D09709226EFCDB00777AAF /* hitSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = B9D09707226EFCDB00777AAF /* hitSound.wav */; };
 		B9D0970A226EFCDB00777AAF /* backgroundMusic.m4a in Resources */ = {isa = PBXBuildFile; fileRef = B9D09708226EFCDB00777AAF /* backgroundMusic.m4a */; };
+		B9D0970C226EFF8900777AAF /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D0970B226EFF8900777AAF /* GameSettings.swift */; };
 		B9E3AB37226C4B1C004D32EB /* PowepUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E3AB36226C4B1C004D32EB /* PowepUp.swift */; };
 		B9E3AB39226C4C01004D32EB /* GreenPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B9E3AB38226C4C01004D32EB /* GreenPowerUp.atlas */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		B9D09705226EEF6000777AAF /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		B9D09707226EFCDB00777AAF /* hitSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitSound.wav; sourceTree = "<group>"; };
 		B9D09708226EFCDB00777AAF /* backgroundMusic.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = backgroundMusic.m4a; sourceTree = "<group>"; };
+		B9D0970B226EFF8900777AAF /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		B9E3AB36226C4B1C004D32EB /* PowepUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowepUp.swift; sourceTree = "<group>"; };
 		B9E3AB38226C4C01004D32EB /* GreenPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenPowerUp.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,7 +160,7 @@
 				B9AC1CA8226C994500DBAA37 /* Assets.swift */,
 				B9AC1CAC226CA40A00DBAA37 /* BitMaskCategory.swift */,
 				B92A4004226DED1100A02C59 /* SceneManager.swift */,
-				B92A4008226DF94D00A02C59 /* OptionScene.swift */,
+				B9D0970B226EFF8900777AAF /* GameSettings.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -170,6 +172,7 @@
 				B98530F62269A6A2006B8A63 /* GameScene.swift */,
 				B9AC1CAA226C9F3F00DBAA37 /* MenuScene.swift */,
 				B92A4002226DE4E300A02C59 /* PauseScene.swift */,
+				B92A4008226DF94D00A02C59 /* OptionScene.swift */,
 				B9D096FE226EE2B600777AAF /* BestScene.swift */,
 				B9D09705226EEF6000777AAF /* GameOverScene.swift */,
 			);
@@ -314,6 +317,7 @@
 			files = (
 				B98530F72269A6A2006B8A63 /* GameScene.swift in Sources */,
 				B9CDCD92226C94380032AE66 /* YellowShot.swift in Sources */,
+				B9D0970C226EFF8900777AAF /* GameSettings.swift in Sources */,
 				B985310F2269D936006B8A63 /* PlayerPlane.swift in Sources */,
 				B9853113226A0137006B8A63 /* GameBackgroundSpriteable + Extension.swift in Sources */,
 				B985310D2269C775006B8A63 /* Cloud.swift in Sources */,
