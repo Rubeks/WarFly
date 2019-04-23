@@ -38,6 +38,7 @@
 		B9AC1CAD226CA40A00DBAA37 /* BitMaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AC1CAC226CA40A00DBAA37 /* BitMaskCategory.swift */; };
 		B9CDCD90226C90490032AE66 /* Shot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CDCD8F226C90490032AE66 /* Shot.swift */; };
 		B9CDCD92226C94380032AE66 /* YellowShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CDCD91226C94380032AE66 /* YellowShot.swift */; };
+		B9D096FF226EE2B600777AAF /* BestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D096FE226EE2B600777AAF /* BestScene.swift */; };
 		B9E3AB37226C4B1C004D32EB /* PowepUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E3AB36226C4B1C004D32EB /* PowepUp.swift */; };
 		B9E3AB39226C4C01004D32EB /* GreenPowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = B9E3AB38226C4C01004D32EB /* GreenPowerUp.atlas */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		B9AC1CAC226CA40A00DBAA37 /* BitMaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMaskCategory.swift; sourceTree = "<group>"; };
 		B9CDCD8F226C90490032AE66 /* Shot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shot.swift; sourceTree = "<group>"; };
 		B9CDCD91226C94380032AE66 /* YellowShot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YellowShot.swift; sourceTree = "<group>"; };
+		B9D096FE226EE2B600777AAF /* BestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestScene.swift; sourceTree = "<group>"; };
 		B9E3AB36226C4B1C004D32EB /* PowepUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowepUp.swift; sourceTree = "<group>"; };
 		B9E3AB38226C4C01004D32EB /* GreenPowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = GreenPowerUp.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +158,7 @@
 				B98530F62269A6A2006B8A63 /* GameScene.swift */,
 				B9AC1CAA226C9F3F00DBAA37 /* MenuScene.swift */,
 				B92A4002226DE4E300A02C59 /* PauseScene.swift */,
+				B9D096FE226EE2B600777AAF /* BestScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				B95D5144226C83D80066488B /* GreenPowerUp.swift in Sources */,
 				B985310B2269BB26006B8A63 /* Island.swift in Sources */,
 				B9E3AB37226C4B1C004D32EB /* PowepUp.swift in Sources */,
+				B9D096FF226EE2B600777AAF /* BestScene.swift in Sources */,
 				B9AC1CAD226CA40A00DBAA37 /* BitMaskCategory.swift in Sources */,
 				B9AC1CAB226C9F3F00DBAA37 /* MenuScene.swift in Sources */,
 				B92A4007226DF61400A02C59 /* ParentScene.swift in Sources */,

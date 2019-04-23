@@ -22,8 +22,6 @@ class MenuScene: ParentScene {
             Assets.shared.isLoaded = true
         }
         
-        self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
-        
         //356. Создание заголовка сцены через вызов функции род.класса сцен
         /*//307. Заголовок игры
          let header = SKSpriteNode(imageNamed: "header1")
@@ -83,6 +81,21 @@ class MenuScene: ParentScene {
             
             //373. Переход при нажатие
             self.scene?.view?.presentScene(optionScene, transition: transition)
+        }
+        else if node.name == "best" {
+            
+            //385. То осуществляется переход через 1сек, crossFade - плавное растворение
+            let transition = SKTransition.crossFade(withDuration: 1.0)
+            
+            let bestScene = BestScene(size: self.size)
+            
+            bestScene.backScene = self
+            
+            //386. scaleMode такой же как и у GameVC
+            bestScene.scaleMode = .aspectFill
+            
+            //387. Переход при нажатие
+            self.scene?.view?.presentScene(bestScene, transition: transition)
         }
     }
 }

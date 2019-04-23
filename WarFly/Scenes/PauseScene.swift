@@ -13,8 +13,6 @@ class PauseScene: ParentScene {
 
     override func didMove(to view: SKView) {
         
-        self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
-        
         //355. Создание заголовка сцены через вызов функции род.класса сцены
         /*//316. Заголовок сцены с паузой
         let header = ButtonNode(titled: "pause", backgroundName: "header_background")
